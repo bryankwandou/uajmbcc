@@ -128,7 +128,7 @@ function Portfolio() {
                   {en ? item.byEn : item.by} · PIC: Vincentius Bryan Kwandou
                 </p>
               </div>
-              <span className="font-mono text-[11px] text-[color:var(--faint)]">{item.domain}</span>
+              <span className="font-mono text-[11px] text-[color:var(--faint)]">{en ? item.domainEn : item.domain}</span>
               <span className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--faint)] md:text-end">
                 {item.net}
               </span>

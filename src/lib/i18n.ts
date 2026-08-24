@@ -27,7 +27,6 @@ export function dirFor(code: Locale): "ltr" | "rtl" {
 }
 
 type Mission = { title: string; body: string };
-type Mvp = { title: string; domain: string; desc: string };
 type Tl = { date: string; title: string; body: string };
 type Ach = { title: string; org: string; tag: string; date: string };
 
@@ -51,7 +50,7 @@ export type Dict = {
   portfolio: {
     kicker: string; title: string; lede: string;
     thNo: string; thProduct: string; thField: string; thStatus: string;
-    statusVal: string; note: string; items: Mvp[];
+    statusVal: string; note: string;
   };
   journey: { kicker: string; title: string; items: Tl[] };
   team: {
@@ -82,7 +81,7 @@ const id: Dict = {
     rows: { parent: "Induk", status: "Status", initiator: "Inisiator", campus: "Kampus", network: "Jaringan" },
     rowVals: { parent: "UKM E-Sport UAJM", status: "Terdaftar, SK & AD/ART", initiator: "Superteam Campus Club", campus: "Atma Jaya Makassar" },
   },
-  stats: ["Produk MVP", "Anggota & pengurus", "Riwayat hackathon", "Meetup builder"],
+  stats: ["MVP selesai", "Target MVP", "Anggota & pengurus", "Riwayat hackathon"],
   ticker: ["Superteam Campus Club", "Builder-first", "Produk Nyata", "Lintas Fakultas", "Web3 Terapan", "Hackathon", "Mentorship Penuh", "Indonesia Timur"],
   about: {
     kicker: "Visi & Misi",
@@ -100,14 +99,6 @@ const id: Dict = {
     lede: "Superteam Campus Club UAJM menargetkan 50 ide mahasiswa menjadi MVP di Solana. Enam sudah selesai dan diuji internal, dengan Vincentius Bryan Kwandou sebagai PIC dan orchestrator. Setiap situs live dan dapat diperiksa.",
     thNo: "No.", thProduct: "Produk", thField: "Bidang", thStatus: "Jaringan", statusVal: "Live",
     note: "Setiap proyek memiliki pemilik ide (ideator) dan situs live yang dapat diperiksa langsung. Klik untuk membuka.",
-    items: [
-      { title: "On-chain Attestation", domain: "Proof & Reputasi", desc: "Sertifikasi kegiatan mahasiswa yang terverifikasi, sulit dipalsukan, dan dapat diaudit publik." },
-      { title: "Campus Micro-Treasury", domain: "Keuangan Transparan", desc: "Pengelolaan kas organisasi dengan jejak transaksi yang terbuka dan tercatat." },
-      { title: "Event Ticketing", domain: "Tiket Digital", desc: "Tiket acara berbasis token dengan validasi masuk yang tidak dapat digandakan." },
-      { title: "Peer Bounty Board", domain: "Koordinasi", desc: "Papan tugas berhadiah untuk kolaborasi antar-anggota dengan penyelesaian otomatis." },
-      { title: "Skill Passport", domain: "Identitas", desc: "Portofolio kompetensi mahasiswa sebagai kredensial yang dapat dibawa antar-platform." },
-      { title: "Transparent Voting", domain: "Tata Kelola", desc: "Pemungutan suara organisasi yang hasilnya tercatat permanen dan dapat diperiksa." },
-    ],
   },
   journey: {
     kicker: "Perjalanan", title: "Jejak yang dapat diperiksa",
@@ -170,7 +161,7 @@ const en: Dict = {
     rows: { parent: "Parent", status: "Status", initiator: "Initiator", campus: "Campus", network: "Network" },
     rowVals: { parent: "UKM E-Sport UAJM", status: "Registered, charter on file", initiator: "Superteam Campus Club", campus: "Atma Jaya Makassar" },
   },
-  stats: ["MVP products", "Members & officers", "Hackathon record", "Builder meetup"],
+  stats: ["MVPs shipped", "MVP target", "Members & officers", "Hackathon record"],
   ticker: ["Superteam Campus Club", "Builder-first", "Real Products", "Cross-faculty", "Applied Web3", "Hackathon", "Full Mentorship", "Eastern Indonesia"],
   about: {
     kicker: "Vision & Mission",
@@ -188,14 +179,6 @@ const en: Dict = {
     lede: "Superteam Campus Club UAJM aims to turn 50 student ideas into MVPs on Solana. Six are complete and internally tested, with Vincentius Bryan Kwandou as PIC and orchestrator. Every site is live and verifiable.",
     thNo: "No.", thProduct: "Product", thField: "Field", thStatus: "Network", statusVal: "Live",
     note: "Each project has a named idea owner and a live site you can open and inspect directly. Click to visit.",
-    items: [
-      { title: "On-chain Attestation", domain: "Proof & Reputation", desc: "Verified records of student activity that resist forgery and can be audited publicly." },
-      { title: "Campus Micro-Treasury", domain: "Transparent Finance", desc: "Organisation treasury management with an open, recorded transaction trail." },
-      { title: "Event Ticketing", domain: "Digital Ticketing", desc: "Token-based event tickets with entry validation that cannot be duplicated." },
-      { title: "Peer Bounty Board", domain: "Coordination", desc: "A rewarded task board for member collaboration with automatic settlement." },
-      { title: "Skill Passport", domain: "Identity", desc: "A student competency portfolio held as credentials that travel across platforms." },
-      { title: "Transparent Voting", domain: "Governance", desc: "Organisation voting whose results are permanently recorded and open to inspection." },
-    ],
   },
   journey: {
     kicker: "Journey", title: "A record that can be checked",
