@@ -76,17 +76,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.26, ease }}
             className="panel-feature self-start p-6"
           >
-            <div className="flex items-center justify-between gap-4 border-b border-[color:var(--line)] pb-4">
+            <div className="border-b border-[color:var(--line)] pb-4">
               <span className="kicker">{h.recordTitle}</span>
-              <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/10">
-                <Image
-                  src="/uajm-logo.png"
-                  alt="Segel Universitas Atma Jaya Makassar"
-                  width={30}
-                  height={30}
-                  className="object-contain"
-                />
-              </span>
             </div>
             <dl className="mt-5 space-y-4 font-mono text-[11px]">
               {rows.map((r) => (

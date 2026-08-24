@@ -45,16 +45,52 @@ export const missions = [
   },
 ];
 
-// Enam MVP dari meetup builder perdana. Judul digeneralisasi untuk menjaga
-// privasi anggota. Setiap ide dibawa sampai prototipe berjalan di bawah
-// pendampingan Vincentius Bryan Kwandou.
-export const mvps = [
-  { code: "01", title: "On-chain Attestation", domain: "Proof & Reputasi", desc: "Sertifikasi kegiatan mahasiswa yang terverifikasi, sulit dipalsukan, dan dapat diaudit publik." },
-  { code: "02", title: "Campus Micro-Treasury", domain: "Keuangan Transparan", desc: "Pengelolaan kas organisasi dengan jejak transaksi yang terbuka dan tercatat." },
-  { code: "03", title: "Event Ticketing", domain: "Tiket Digital", desc: "Tiket acara berbasis token dengan validasi masuk yang tidak dapat digandakan." },
-  { code: "04", title: "Peer Bounty Board", domain: "Koordinasi", desc: "Papan tugas berhadiah untuk kolaborasi antar-anggota dengan penyelesaian otomatis." },
-  { code: "05", title: "Skill Passport", domain: "Identitas", desc: "Portofolio kompetensi mahasiswa sebagai kredensial yang dapat dibawa antar-platform." },
-  { code: "06", title: "Transparent Voting", domain: "Tata Kelola", desc: "Pemungutan suara organisasi yang hasilnya tercatat permanen dan dapat diperiksa." },
+// Enam MVP nyata hasil pendampingan Superteam Campus Club UAJM. Setiap proyek
+// punya pemilik ide (ideator) dan situs live yang dapat diperiksa. PIC dan
+// orchestrator untuk keenamnya: Vincentius Bryan Kwandou (mahasiswa aktif).
+// Data ini terdokumentasi resmi, bukan generalisasi.
+export type Mvp = {
+  code: string; title: string; domain: string; net: string;
+  desc: string; descEn: string; by: string; byEn: string; href: string;
+};
+
+export const mvps: Mvp[] = [
+  {
+    code: "01", title: "KopEdu", domain: "Edukasi Koperasi", net: "Solana",
+    desc: "Literasi koperasi Indonesia lewat kurikulum interaktif, AI tutor, dan sertifikat NFT on-chain di Solana sebagai bukti belajar yang permanen dan terverifikasi. Berawal dari Web2, kini MVP berbasis Solana.",
+    descEn: "Indonesian cooperative literacy through an interactive curriculum, an AI tutor, and on-chain NFT certificates on Solana as permanent, verifiable proof of learning. Started as Web2, now a Solana-based MVP.",
+    by: "Ide: Marvel Harjosetio", byEn: "Idea: Marvel Harjosetio", href: "https://kopedux.vercel.app",
+  },
+  {
+    code: "02", title: "Veritair", domain: "Drone Delivery", net: "Solana",
+    desc: "Platform pemesanan dan pembayaran layanan drone delivery berbasis Solana.",
+    descEn: "A Solana-based ordering and payment platform for drone delivery services.",
+    by: "Ide: Putra Purwanugraha Tengbunan", byEn: "Idea: Putra Purwanugraha Tengbunan", href: "https://veritair.vercel.app",
+  },
+  {
+    code: "03", title: "SOLQ", domain: "Pembayaran QRIS", net: "Solana Mainnet",
+    desc: "Orkestrator pembayaran Solana x QRIS: bayar merchant QRIS Indonesia mana pun pakai SOL, USDC, atau IDRX secara instan dan non-custodial.",
+    descEn: "A Solana x QRIS payment orchestrator: pay any Indonesian QRIS merchant with SOL, USDC, or IDRX, instantly and non-custodially.",
+    by: "PIC: Vincentius Bryan Kwandou", byEn: "PIC: Vincentius Bryan Kwandou", href: "https://solq.vercel.app",
+  },
+  {
+    code: "04", title: "EverAnima", domain: "AI Memory On-chain", net: "Solana Devnet",
+    desc: "AI pribadi yang menulis sendiri file memorinya (persona.md), menyegel tiap versi ke Solana Devnet lewat Memo program dengan tanda tangan wallet pemilik, dan dapat dibawa ke agent AI mana pun.",
+    descEn: "A personal AI that writes its own memory file (persona.md), seals each version to Solana Devnet via the Memo program signed by the owner's wallet, and can be exported to any AI agent.",
+    by: "Ide: Marvel Harjosetio", byEn: "Idea: Marvel Harjosetio", href: "https://everanima.vercel.app",
+  },
+  {
+    code: "05", title: "DiaFund", domain: "Donasi Escrow", net: "Solana",
+    desc: "Platform donasi dengan escrow berbasis milestone di Solana.",
+    descEn: "A donation platform with milestone-based escrow on Solana.",
+    by: "Ide: Christian Alexander Wongso", byEn: "Idea: Christian Alexander Wongso", href: "https://diafund.vercel.app",
+  },
+  {
+    code: "06", title: "Anamneon", domain: "Rekam Medis", net: "Solana",
+    desc: "Riwayat penyakit pasien yang dikunci di Solana: dapat dibuktikan asli dalam hitungan detik, tanpa satu byte data medis pun bocor ke publik.",
+    descEn: "Patient medical history anchored on Solana: provably authentic in seconds, without leaking a single byte of medical data to the public.",
+    by: "Ide: Denzel Joshua Yasin", byEn: "Idea: Denzel Joshua Yasin", href: "https://anamneon.vercel.app",
+  },
 ];
 
 export const timeline = [

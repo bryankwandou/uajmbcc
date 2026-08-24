@@ -96,10 +96,10 @@ const id: Dict = {
     ],
   },
   portfolio: {
-    kicker: "Portofolio", title: "Enam produk dari satu meetup",
-    lede: "Mahasiswa membawa ide, tim mendampingi pengembangan penuh sampai prototipe berjalan.",
-    thNo: "No.", thProduct: "Produk", thField: "Bidang", thStatus: "Status", statusVal: "Berjalan",
-    note: "Judul produk digeneralisasi untuk menjaga privasi anggota. Detail teknis dibagikan pada sesi demo internal.",
+    kicker: "Portofolio", title: "Enam ide mahasiswa, enam MVP di Solana",
+    lede: "Superteam Campus Club UAJM menargetkan 50 ide mahasiswa menjadi MVP di Solana. Enam sudah selesai dan diuji internal, dengan Vincentius Bryan Kwandou sebagai PIC dan orchestrator. Setiap situs live dan dapat diperiksa.",
+    thNo: "No.", thProduct: "Produk", thField: "Bidang", thStatus: "Jaringan", statusVal: "Live",
+    note: "Setiap proyek memiliki pemilik ide (ideator) dan situs live yang dapat diperiksa langsung. Klik untuk membuka.",
     items: [
       { title: "On-chain Attestation", domain: "Proof & Reputasi", desc: "Sertifikasi kegiatan mahasiswa yang terverifikasi, sulit dipalsukan, dan dapat diaudit publik." },
       { title: "Campus Micro-Treasury", domain: "Keuangan Transparan", desc: "Pengelolaan kas organisasi dengan jejak transaksi yang terbuka dan tercatat." },
@@ -184,10 +184,10 @@ const en: Dict = {
     ],
   },
   portfolio: {
-    kicker: "Portfolio", title: "Six products from one meetup",
-    lede: "Students brought the ideas, the team mentored the full build until each prototype ran.",
-    thNo: "No.", thProduct: "Product", thField: "Field", thStatus: "Status", statusVal: "Running",
-    note: "Product titles are generalised to protect member privacy. Technical detail is shared at internal demo sessions.",
+    kicker: "Portfolio", title: "Six student ideas, six MVPs on Solana",
+    lede: "Superteam Campus Club UAJM aims to turn 50 student ideas into MVPs on Solana. Six are complete and internally tested, with Vincentius Bryan Kwandou as PIC and orchestrator. Every site is live and verifiable.",
+    thNo: "No.", thProduct: "Product", thField: "Field", thStatus: "Network", statusVal: "Live",
+    note: "Each project has a named idea owner and a live site you can open and inspect directly. Click to visit.",
     items: [
       { title: "On-chain Attestation", domain: "Proof & Reputation", desc: "Verified records of student activity that resist forgery and can be audited publicly." },
       { title: "Campus Micro-Treasury", domain: "Transparent Finance", desc: "Organisation treasury management with an open, recorded transaction trail." },

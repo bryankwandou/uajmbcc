@@ -4,9 +4,9 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
-import { LogoMark } from "@/components/Logo";
+import { BrandChip } from "@/components/Logo";
 import { useApp } from "@/components/Providers";
-import { org, structure, faculties, links, contact } from "@/lib/content";
+import { org, structure, faculties, links, contact, mvps } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -91,38 +91,54 @@ function About() {
 }
 
 function Portfolio() {
-  const { t } = useApp();
+  const { t, locale } = useApp();
   const p = t.portfolio;
+  const en = locale === "id" ? false : true;
   return (
     <section id="portofolio" className="mx-auto max-w-6xl px-6 py-28">
       <SectionHead kicker={p.kicker} title={p.title} lede={p.lede} />
 
       <Stagger className="mt-14">
-        <div className="hidden grid-cols-[64px_1.1fr_0.7fr_100px] gap-6 border-b border-[color:var(--line-strong)] pb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[color:var(--faint)] md:grid">
+        <div className="hidden grid-cols-[52px_1.15fr_0.55fr_150px] gap-6 border-b border-[color:var(--line-strong)] pb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[color:var(--faint)] md:grid">
           <span>{p.thNo}</span>
           <span>{p.thProduct}</span>
           <span>{p.thField}</span>
           <span className="text-end">{p.thStatus}</span>
         </div>
-        {p.items.map((item, i) => (
-          <StaggerItem key={item.title}>
-            <article className="grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:background-color] hover:bg-[color:var(--surface)] md:grid-cols-[64px_1.1fr_0.7fr_100px] md:items-baseline md:gap-6">
-              <span className="font-mono text-[11px] text-[color:var(--gold)]">0{i + 1}</span>
+        {mvps.map((item) => (
+          <StaggerItem key={item.code}>
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:background-color] hover:bg-[color:var(--surface)] md:grid-cols-[52px_1.15fr_0.55fr_150px] md:items-baseline md:gap-6"
+            >
+              <span className="font-mono text-[11px] text-[color:var(--gold)]">{item.code}</span>
               <div>
-                <h3 className="font-display text-xl leading-tight text-[color:var(--text)]">{item.title}</h3>
-                <p className="mt-1.5 max-w-md text-[13.5px] leading-[1.65] text-[color:var(--muted)]">{item.desc}</p>
+                <h3 className="font-display text-xl leading-tight text-[color:var(--text)]">
+                  {item.title}
+                  <span className="ms-2 inline-block font-mono text-[10px] uppercase tracking-wider text-[color:var(--faint)] opacity-0 duration-200 [transition-property:opacity] group-hover:opacity-100">
+                    {item.href.replace("https://", "")} ↗
+                  </span>
+                </h3>
+                <p className="mt-1.5 max-w-md text-[13.5px] leading-[1.65] text-[color:var(--muted)]">
+                  {en ? item.descEn : item.desc}
+                </p>
+                <p className="mt-1.5 font-mono text-[10.5px] text-[color:var(--faint)]">
+                  {en ? item.byEn : item.by} · PIC: Vincentius Bryan Kwandou
+                </p>
               </div>
               <span className="font-mono text-[11px] text-[color:var(--faint)]">{item.domain}</span>
               <span className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--faint)] md:text-end">
-                {p.statusVal}
+                {item.net}
               </span>
-            </article>
+            </a>
           </StaggerItem>
         ))}
       </Stagger>
 
       <Reveal>
-        <p className="mt-6 max-w-xl font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{p.note}</p>
+        <p className="mt-6 max-w-2xl font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{p.note}</p>
       </Reveal>
     </section>
   );
@@ -269,21 +285,10 @@ function Footer() {
     <footer className="mx-auto max-w-6xl px-6 py-16">
       <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_0.9fr]">
         <div>
-          <div className="flex items-start gap-3">
-            <LogoMark size={34} />
-            <div>
-              <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
-              <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
-            </div>
-          </div>
-          <div className="mt-5 inline-block rounded-md bg-white p-3 ring-1 ring-black/10">
-            <Image
-              src="/superteam-campus-club.png"
-              alt="Superteam Campus Club, dikelola Universitas Atma Jaya Makassar"
-              width={220}
-              height={82}
-              className="h-auto w-[190px] object-contain"
-            />
+          <BrandChip height={34} />
+          <div className="mt-4">
+            <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
+            <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
           </div>
         </div>
 
