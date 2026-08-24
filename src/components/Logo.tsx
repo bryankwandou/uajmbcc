@@ -34,13 +34,15 @@ export function LogoMark({ size = 30 }: { size?: number }) {
 
 export function Logo() {
   return (
-    <div className="flex items-center gap-3">
-      <BrandChip height={26} />
-      <div className="leading-none">
-        <div className="font-display text-[16px] tracking-[-0.01em] text-[color:var(--text)]">
+    <div className="flex min-w-0 items-center gap-2.5">
+      <BrandChip height={24} />
+      {/* Wordmark is hidden on the narrowest viewports so it can never collide
+          with the language and theme controls. */}
+      <div className="hidden min-w-0 leading-none sm:block">
+        <div className="whitespace-nowrap font-display text-[15px] tracking-[-0.01em] text-[color:var(--text)]">
           UAJM <span className="text-[color:var(--gold)]">BCC</span>
         </div>
-        <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.2em] text-[color:var(--faint)]">
+        <div className="mt-1 whitespace-nowrap font-mono text-[8px] uppercase tracking-[0.2em] text-[color:var(--faint)]">
           Blockchain Club
         </div>
       </div>

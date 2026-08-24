@@ -42,8 +42,8 @@ export function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <a href="#top" aria-label="UAJM BCC">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4">
+        <a href="#top" aria-label="UAJM BCC" className="min-w-0 shrink">
           <Logo />
         </a>
 
@@ -55,7 +55,7 @@ export function Nav() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex shrink-0 items-center gap-2.5">
           <Controls />
           <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary hidden px-4 py-2 text-[12px] sm:inline-block">
             {t.nav.join}
