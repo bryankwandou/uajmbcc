@@ -61,7 +61,6 @@ export type Dict = {
     faculties: string[]; facultyNote: string;
   };
   achievements: { kicker: string; title: string; items: Ach[] };
-  gallery: { kicker: string; title: string; lede: string; viewAll: string };
   cta: { kicker: string; title: string; lede: string; join: string; instagram: string; github: string };
   footer: { rights: string };
   proof: { toggle: string; blurb: string; slot: string; check: string; checking: string; status: string; balance: string; program: string; owner: string; found: string; notFound: string; yes: string; no: string; rpcError: string };
@@ -139,11 +138,6 @@ const id: Dict = {
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
       { title: "Hampir 30 Hackathon", org: "Portofolio pendiri", tag: "GitHub: bryankwandou", date: "2024 s.d. 2026" },
     ],
-  },
-  gallery: {
-    kicker: "Galeri", title: "Arsip Instagram",
-    lede: "Dokumentasi kegiatan, meetup, dan acara langsung dari",
-    viewAll: "Lihat semua di Instagram",
   },
   cta: {
     kicker: "Kontak", title: "Bangun yang berikutnya bersama kami",
@@ -231,11 +225,6 @@ const en: Dict = {
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
       { title: "Nearly 30 Hackathons", org: "Founder portfolio", tag: "GitHub: bryankwandou", date: "2024 to 2026" },
     ],
-  },
-  gallery: {
-    kicker: "Gallery", title: "Instagram archive",
-    lede: "Documentation of activities, meetups, and events straight from",
-    viewAll: "See all on Instagram",
   },
   cta: {
     kicker: "Contact", title: "Build the next one with us",

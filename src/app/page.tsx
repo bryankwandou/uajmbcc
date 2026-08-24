@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
-import { InstagramFeed } from "@/components/InstagramFeed";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { LogoMark } from "@/components/Logo";
 import { useApp } from "@/components/Providers";
@@ -20,7 +19,6 @@ export default function Home() {
       <Journey />
       <Team />
       <Achievements />
-      <InstagramFeed />
       <CTA />
       <Footer />
       <OnChainVerify />
