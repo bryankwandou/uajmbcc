@@ -7,19 +7,20 @@ import Image from "next/image";
    lockup already contains the sanctioned managed-by seal.
    The logo art is dark on transparent, so it sits on a white chip to stay
    legible on both the dark and light themes. */
+/* The approved lockup art is 1191x648 (about 1.84:1) after trimming its empty
+   margins, so the chip is sized by width and lets height follow. */
 export function BrandChip({ height = 30 }: { height?: number }) {
+  const width = Math.round(height * 1.84);
   return (
-    <span
-      className="inline-flex items-center rounded-md bg-white px-2.5 py-1.5 ring-1 ring-black/10"
-      style={{ height: height + 12 }}
-    >
+    <span className="inline-flex shrink-0 items-center justify-center rounded-md bg-white px-2 py-1.5 ring-1 ring-black/10">
       <Image
         src="/superteam-campus-club.png"
         alt="Superteam Campus Club, dikelola Universitas Atma Jaya Makassar"
-        width={Math.round(height * 2.6)}
+        width={width}
         height={height}
-        className="h-auto w-auto object-contain"
-        style={{ height }}
+        sizes={`${width}px`}
+        className="block h-auto object-contain"
+        style={{ width }}
         priority
       />
     </span>
