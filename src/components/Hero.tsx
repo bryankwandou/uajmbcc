@@ -1,131 +1,124 @@
 "use client";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { org, stats } from "@/lib/content";
 import { CountUp } from "./CountUp";
+import { useApp } from "./Providers";
+
+const ease = [0.2, 0.7, 0.3, 1] as const;
 
 export function Hero() {
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 120, damping: 20 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), { stiffness: 120, damping: 20 });
+  const { t } = useApp();
+  const h = t.hero;
 
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      mx.set(e.clientX / window.innerWidth - 0.5);
-      my.set(e.clientY / window.innerHeight - 0.5);
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, [mx, my]);
+  const rows = [
+    { k: h.rows.parent, v: h.rowVals.parent },
+    { k: h.rows.status, v: h.rowVals.status },
+    { k: h.rows.initiator, v: h.rowVals.initiator },
+    { k: h.rows.campus, v: h.rowVals.campus },
+    { k: h.rows.network, v: org.network },
+  ];
 
   return (
-    <section id="top" className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="chip inline-flex items-center gap-2 px-3 py-1.5 text-xs text-white/70"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-glow" />
-            Di bawah {org.parent}
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
-          >
-            Ide mahasiswa, <br />
-            jadi <span className="gradient-text">produk nyata.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
-            className="mt-6 max-w-lg text-base leading-relaxed text-white/60 md:text-lg"
-          >
-            {org.full}, klub blockchain di bawah {org.parent}. Mahasiswa merancang ide,
-            lalu kami dampingi sampai produk berjalan. Diinisiasi{" "}
-            <span className="text-white/80">{org.initiatedBy}</span>.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
-          >
-            <a href="#portofolio" className="btn-primary rounded-full px-6 py-3 text-sm">
-              Lihat portofolio
-            </a>
-            <a
-              href="#tentang"
-              className="rounded-full border border-white/12 px-6 py-3 text-sm text-white/80 transition-colors hover:border-white/30 hover:text-white"
+    <section id="top" className="relative overflow-hidden pt-32 md:pt-40">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-14 md:grid-cols-[1.25fr_0.75fr] md:gap-16">
+          <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-3"
             >
-              Tentang kami
-            </a>
-          </motion.div>
+              <span className="accent-rule" />
+              <span className="kicker">{h.kicker}</span>
+            </motion.div>
 
-          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-4">
-            {stats.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-              >
-                <div className="font-display text-2xl font-bold text-white md:text-3xl">
-                  <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
-                </div>
-                <div className="mt-1 text-xs leading-tight text-white/50">{s.label}</div>
-              </motion.div>
-            ))}
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.06, ease }}
+              className="mt-7 font-display text-[2.6rem] leading-[1.04] tracking-[-0.02em] text-[color:var(--text)] sm:text-6xl md:text-[4.15rem]"
+            >
+              {h.title1}
+              <br />
+              {h.title2} <em className="italic text-[color:var(--gold)]">{h.titleEm}</em>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.14, ease }}
+              className="mt-7 max-w-xl text-[15px] leading-[1.7] text-[color:var(--muted)]"
+            >
+              {h.lede}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease }}
+              className="mt-9 flex flex-wrap items-center gap-3"
+            >
+              <a href="#portofolio" className="btn-primary px-6 py-3 text-[13px]">
+                {h.ctaPrimary}
+              </a>
+              <a href="#tentang" className="btn-ghost px-6 py-3 text-[13px]">
+                {h.ctaSecondary}
+              </a>
+            </motion.div>
           </div>
+
+          {/* Institutional record. Specific to this organisation, not decorative. */}
+          <motion.aside
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.26, ease }}
+            className="panel-feature self-start p-6"
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-[color:var(--line)] pb-4">
+              <span className="kicker">{h.recordTitle}</span>
+              <Image
+                src="/uajm-logo.png"
+                alt="Segel Universitas Atma Jaya Makassar"
+                width={34}
+                height={34}
+                className="shrink-0 object-contain"
+              />
+            </div>
+            <dl className="mt-5 space-y-4 font-mono text-[11px]">
+              {rows.map((r) => (
+                <div key={r.k} className="flex items-baseline justify-between gap-5">
+                  <dt className="shrink-0 text-[color:var(--faint)]">{r.k}</dt>
+                  <dd className="text-end text-[color:var(--text)]">{r.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </motion.aside>
         </div>
 
-        <motion.div
-          style={{ rotateX: rx, rotateY: ry, transformPerspective: 1000 }}
-          className="relative mx-auto hidden aspect-square w-full max-w-sm md:block"
-        >
-          <BlockCluster />
-        </motion.div>
+        {/* Ledger row, not gradient metric cards */}
+        <div className="mt-20 grid grid-cols-2 border-t border-[color:var(--line)] sm:grid-cols-4">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.34 + i * 0.07, ease }}
+              className={`border-b border-[color:var(--line)] py-7 sm:border-b-0 ${
+                i > 0 ? "sm:border-s sm:ps-7" : ""
+              } ${i % 2 === 1 ? "border-s ps-7 sm:ps-7" : ""}`}
+            >
+              <div className="font-mono text-[2rem] leading-none text-[color:var(--text)]">
+                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
+              </div>
+              <div className="mt-2.5 text-[11px] leading-tight text-[color:var(--faint)]">
+                {t.stats[i]}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
-  );
-}
-
-function BlockCluster() {
-  const blocks = [
-    { x: "34%", y: "8%", s: 96, d: 0, c: "from-cyan-glow/25" },
-    { x: "8%", y: "40%", s: 76, d: 0.4, c: "from-violet-glow/25" },
-    { x: "58%", y: "44%", s: 120, d: 0.8, c: "from-violet-glow/20" },
-    { x: "30%", y: "68%", s: 84, d: 1.2, c: "from-cyan-glow/20" },
-  ];
-  return (
-    <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <line x1="42" y1="18" x2="20" y2="52" stroke="rgba(124,92,255,0.25)" strokeWidth="0.4" />
-        <line x1="42" y1="18" x2="66" y2="54" stroke="rgba(34,211,238,0.25)" strokeWidth="0.4" />
-        <line x1="20" y1="52" x2="40" y2="78" stroke="rgba(124,92,255,0.2)" strokeWidth="0.4" />
-        <line x1="66" y1="54" x2="40" y2="78" stroke="rgba(34,211,238,0.2)" strokeWidth="0.4" />
-      </svg>
-      {blocks.map((b, i) => (
-        <motion.div
-          key={i}
-          className={`glass absolute grid place-items-center rounded-2xl bg-gradient-to-br ${b.c} to-transparent`}
-          style={{ left: b.x, top: b.y, width: b.s, height: b.s }}
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 5 + b.d, repeat: Infinity, ease: "easeInOut", delay: b.d }}
-        >
-          <div className="h-2 w-2 rounded-full bg-white/70" />
-        </motion.div>
-      ))}
-    </div>
   );
 }

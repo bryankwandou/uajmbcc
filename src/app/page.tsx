@@ -1,24 +1,26 @@
+"use client";
 import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { LogoMark } from "@/components/Logo";
-import {
-  org, vision, missions, mvps, timeline, structure, achievements, faculties, links,
-} from "@/lib/content";
+import { useApp } from "@/components/Providers";
+import { org, structure, faculties, links } from "@/lib/content";
 
 export default function Home() {
   return (
     <main className="bg-field relative min-h-screen">
       <Nav />
       <Hero />
-      <Marquee />
+      <Ticker />
       <About />
       <Portfolio />
       <Journey />
       <Team />
       <Achievements />
+      <InstagramFeed />
       <CTA />
       <Footer />
       <OnChainVerify />
@@ -26,19 +28,34 @@ export default function Home() {
   );
 }
 
-function Marquee() {
-  const words = [
-    "Superteam Campus Club", "Builder-first", "Produk Nyata", "Lintas Fakultas",
-    "Web3 Terapan", "Hackathon", "Mentorship Penuh", "Indonesia Timur",
-  ];
-  const row = [...words, ...words];
+/* Left-anchored, asymmetric. Nothing is centred. */
+function SectionHead({ kicker, title, lede }: { kicker: string; title: string; lede?: string }) {
   return (
-    <div className="relative overflow-hidden border-y border-white/6 py-4">
-      <div className="marquee-track flex w-max gap-10 whitespace-nowrap">
+    <div className="grid gap-6 md:grid-cols-[180px_1fr] md:gap-12">
+      <div className="pt-2">
+        <span className="accent-rule mb-3 block" />
+        <span className="kicker">{kicker}</span>
+      </div>
+      <div>
+        <h2 className="font-display text-[2rem] leading-[1.1] tracking-[-0.02em] text-[color:var(--text)] md:text-[2.75rem]">
+          {title}
+        </h2>
+        {lede && <p className="mt-4 max-w-xl text-[15px] leading-[1.7] text-[color:var(--muted)]">{lede}</p>}
+      </div>
+    </div>
+  );
+}
+
+function Ticker() {
+  const { t } = useApp();
+  const row = [...t.ticker, ...t.ticker];
+  return (
+    <div className="mt-24 overflow-hidden border-y border-[color:var(--line)] py-3.5">
+      <div className="marquee-track flex w-max gap-8 whitespace-nowrap">
         {row.map((w, i) => (
-          <span key={i} className="flex items-center gap-10 text-sm text-white/35">
+          <span key={i} className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--faint)]">
             <span>{w}</span>
-            <span className="text-violet-glow/60">◆</span>
+            <span className="text-[color:var(--gold)] opacity-60">/</span>
           </span>
         ))}
       </div>
@@ -46,42 +63,27 @@ function Marquee() {
   );
 }
 
-function SectionHead({ kicker, title, sub }: { kicker: string; title: React.ReactNode; sub?: string }) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <span className="chip inline-block px-3 py-1 text-xs text-white/60">{kicker}</span>
-      <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white md:text-4xl">{title}</h2>
-      {sub && <p className="mt-4 text-white/55">{sub}</p>}
-    </div>
-  );
-}
-
 function About() {
+  const { t } = useApp();
   return (
-    <section id="tentang" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionHead
-        kicker="Visi & Misi"
-        title={<>Kenapa <span className="gradient-text">BCC</span> ada</>}
-      />
-      <Reveal delay={0.05} className="mx-auto mt-10 max-w-3xl">
-        <div className="glass rounded-3xl p-8 text-center">
-          <div className="text-[10px] uppercase tracking-[0.25em] text-cyan-glow/80">Visi</div>
-          <p className="mt-3 text-lg leading-relaxed text-white/85 md:text-xl">{vision}</p>
-        </div>
+    <section id="tentang" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={t.about.kicker} title={t.about.title} />
+
+      <Reveal className="mt-14 md:ps-[228px]">
+        <blockquote className="max-w-3xl border-s-2 border-[color:var(--gold)] ps-7">
+          <p className="font-display text-[1.6rem] leading-[1.35] tracking-[-0.01em] text-[color:var(--text)] md:text-[2.1rem]">
+            {t.about.vision}
+          </p>
+        </blockquote>
       </Reveal>
-      <Stagger className="mt-6 grid gap-5 md:grid-cols-2">
-        {missions.map((m, i) => (
+
+      <Stagger className="mt-16 md:ps-[228px]">
+        {t.about.missions.map((m, i) => (
           <StaggerItem key={m.title}>
-            <div className="glass h-full rounded-2xl p-6 transition-transform hover:-translate-y-1">
-              <div className="flex items-start gap-4">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-violet-glow/25 to-cyan-glow/10 font-display text-sm font-bold text-white">
-                  0{i + 1}
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-white">{m.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/55">{m.body}</p>
-                </div>
-              </div>
+            <div className="grid grid-cols-[36px_1fr] gap-5 border-t border-[color:var(--line)] py-7 md:grid-cols-[52px_240px_1fr] md:gap-8">
+              <span className="font-mono text-[11px] text-[color:var(--gold)]">0{i + 1}</span>
+              <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{m.title}</h3>
+              <p className="col-span-2 text-[14px] leading-[1.7] text-[color:var(--muted)] md:col-span-1">{m.body}</p>
             </div>
           </StaggerItem>
         ))}
@@ -91,57 +93,56 @@ function About() {
 }
 
 function Portfolio() {
+  const { t } = useApp();
+  const p = t.portfolio;
   return (
-    <section id="portofolio" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionHead
-        kicker="Portofolio · Meetup Perdana"
-        title={<>6 MVP lahir di <span className="gradient-text">satu meetup</span></>}
-        sub="Mahasiswa membawa ide, tim mendampingi pengembangan penuh sampai prototipe berjalan."
-      />
-      <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {mvps.map((p) => (
-          <StaggerItem key={p.code}>
-            <div className="glass group relative h-full overflow-hidden rounded-2xl p-6 transition-transform hover:-translate-y-1.5">
-              <div className="absolute right-5 top-5 font-display text-4xl font-bold text-white/6 transition-colors group-hover:text-white/12">
-                {p.code}
+    <section id="portofolio" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={p.kicker} title={p.title} lede={p.lede} />
+
+      <Stagger className="mt-14">
+        <div className="hidden grid-cols-[64px_1.1fr_0.7fr_100px] gap-6 border-b border-[color:var(--line-strong)] pb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[color:var(--faint)] md:grid">
+          <span>{p.thNo}</span>
+          <span>{p.thProduct}</span>
+          <span>{p.thField}</span>
+          <span className="text-end">{p.thStatus}</span>
+        </div>
+        {p.items.map((item, i) => (
+          <StaggerItem key={item.title}>
+            <article className="grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:background-color] hover:bg-[color:var(--surface)] md:grid-cols-[64px_1.1fr_0.7fr_100px] md:items-baseline md:gap-6">
+              <span className="font-mono text-[11px] text-[color:var(--gold)]">0{i + 1}</span>
+              <div>
+                <h3 className="font-display text-xl leading-tight text-[color:var(--text)]">{item.title}</h3>
+                <p className="mt-1.5 max-w-md text-[13.5px] leading-[1.65] text-[color:var(--muted)]">{item.desc}</p>
               </div>
-              <div className="chip inline-block px-2.5 py-1 text-[10px] uppercase tracking-wider text-cyan-glow/80">
-                {p.domain}
-              </div>
-              <h3 className="mt-4 font-display text-xl font-semibold text-white">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{p.desc}</p>
-              <div className="mt-5 flex items-center gap-2 text-xs text-white/40">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-glow" />
-                Deployed · Devnet
-              </div>
-            </div>
+              <span className="font-mono text-[11px] text-[color:var(--faint)]">{item.domain}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--faint)] md:text-end">
+                {p.statusVal}
+              </span>
+            </article>
           </StaggerItem>
         ))}
       </Stagger>
-      <Reveal delay={0.1}>
-        <p className="mt-8 text-center text-xs text-white/35">
-          Judul produk digeneralisasi untuk menjaga privasi anggota. Detail teknis dibagikan pada sesi demo internal.
-        </p>
+
+      <Reveal>
+        <p className="mt-6 max-w-xl font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{p.note}</p>
       </Reveal>
     </section>
   );
 }
 
 function Journey() {
+  const { t } = useApp();
   return (
-    <section id="perjalanan" className="mx-auto max-w-4xl px-5 py-24">
-      <SectionHead kicker="Perjalanan" title={<>Jejak yang <span className="gradient-text">dapat diperiksa</span></>} />
-      <div className="mt-14 space-y-2">
-        {timeline.map((t, i) => (
-          <Reveal key={t.date} delay={i * 0.05}>
-            <div className="relative grid grid-cols-[110px_1fr] gap-5 md:grid-cols-[150px_1fr]">
-              <div className="pt-1 text-right">
-                <div className="font-mono text-sm font-semibold text-cyan-glow/90">{t.date}</div>
-              </div>
-              <div className="relative border-l border-white/10 pb-8 pl-6">
-                <span className="absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-ink-950 bg-gradient-to-br from-violet-glow to-cyan-glow" />
-                <h3 className="font-display text-lg font-semibold text-white">{t.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/55">{t.body}</p>
+    <section id="perjalanan" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={t.journey.kicker} title={t.journey.title} />
+      <div className="mt-14 md:ps-[228px]">
+        {t.journey.items.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.05}>
+            <div className="grid grid-cols-1 gap-2 border-t border-[color:var(--line)] py-7 md:grid-cols-[136px_1fr] md:gap-10">
+              <div className="font-mono text-[11px] text-[color:var(--gold)]">{item.date}</div>
+              <div>
+                <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{item.title}</h3>
+                <p className="mt-2 max-w-xl text-[14px] leading-[1.7] text-[color:var(--muted)]">{item.body}</p>
               </div>
             </div>
           </Reveal>
@@ -152,74 +153,73 @@ function Journey() {
 }
 
 function Team() {
+  const { t } = useApp();
+  const s = t.team;
   return (
-    <section id="tim" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionHead
-        kicker="Struktur"
-        title={<>Satu ekosistem, <span className="gradient-text">empat divisi</span></>}
-        sub="UAJM BCC berjalan di bawah payung resmi UKM E-Sport UAJM, dengan SK dan AD/ART terdaftar."
-      />
-      <Reveal delay={0.03} className="mx-auto mt-10 flex max-w-md items-center justify-center gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <Image src="/uajm-logo.png" alt="Logo Universitas Atma Jaya Makassar" width={56} height={56} className="object-contain" />
-          <span className="text-[10px] text-white/40">Atma Jaya Makassar</span>
-        </div>
-        <span className="text-white/20">×</span>
-        <div className="flex flex-col items-center gap-2">
-          <Image src="/ukm-esport-logo.png" alt="Logo UKM E-Sport UAJM" width={56} height={56} className="object-contain" />
-          <span className="text-[10px] text-white/40">UKM E-Sport UAJM</span>
-        </div>
-      </Reveal>
+    <section id="tim" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={s.kicker} title={s.title} lede={s.lede} />
 
-      <Reveal delay={0.05} className="mx-auto mt-8 max-w-2xl">
-        <div className="glass glow-ring rounded-3xl p-7 text-center">
-          <div className="text-[10px] uppercase tracking-[0.25em] text-white/40">{structure.lead.role}</div>
-          <div className="mt-2 font-display text-2xl font-bold text-white">{structure.lead.name}</div>
-          <div className="mt-1 text-sm text-white/50">{structure.lead.note}</div>
-        </div>
-      </Reveal>
-      <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {structure.divisions.map((d) => (
-          <StaggerItem key={d.name}>
-            <div className="glass h-full rounded-2xl p-5">
-              <h3 className="font-display text-base font-semibold text-white">{d.name}</h3>
-              <p className="mt-2 text-xs text-white/50">{d.focus}</p>
+      <div className="mt-14 grid gap-12 md:grid-cols-2">
+        <Reveal>
+          <div className="panel-feature p-7">
+            <span className="kicker">{s.leadRole}</span>
+            <div className="mt-3 font-display text-[1.75rem] leading-tight text-[color:var(--text)]">
+              {structure.lead.name}
             </div>
-          </StaggerItem>
-        ))}
-      </Stagger>
+            <div className="mt-2 text-[13.5px] text-[color:var(--muted)]">{s.leadNote}</div>
+            <div className="mt-7 flex items-center gap-5 border-t border-[color:var(--line)] pt-6">
+              <Image src="/uajm-logo.png" alt="Segel Universitas Atma Jaya Makassar" width={40} height={40} className="shrink-0 object-contain" />
+              <Image src="/ukm-esport-logo.png" alt="Logo UKM E-Sport UAJM" width={40} height={40} className="shrink-0 object-contain" />
+              <span className="font-mono text-[10px] leading-relaxed text-[color:var(--faint)]">
+                Atma Jaya Makassar
+                <br />
+                UKM E-Sport UAJM
+              </span>
+            </div>
+          </div>
+        </Reveal>
 
-      <Reveal delay={0.1}>
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {faculties.map((f) => (
-            <div key={f.name} className="glass rounded-2xl p-5 text-center">
-              <div className="font-display text-3xl font-bold text-white">{f.count}</div>
-              <div className="mt-1 text-xs text-white/50">Anggota · {f.name}</div>
-            </div>
+        <Stagger>
+          {s.divisions.map((d) => (
+            <StaggerItem key={d.name}>
+              <div className="flex items-baseline justify-between gap-6 border-t border-[color:var(--line)] py-5">
+                <h3 className="font-display text-[17px] text-[color:var(--text)]">{d.name}</h3>
+                <span className="shrink-0 font-mono text-[10.5px] text-[color:var(--faint)]">{d.focus}</span>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
-        <p className="mt-4 text-center text-xs text-white/35">
-          Komposisi lintas fakultas dari data pendaftaran resmi: teknis, bisnis, dan hukum dalam satu tim.
-        </p>
-      </Reveal>
+          <Reveal delay={0.15}>
+            <div className="mt-9 grid grid-cols-3 gap-4 border-t border-[color:var(--line-strong)] pt-6">
+              {faculties.map((f, i) => (
+                <div key={f.name}>
+                  <div className="font-mono text-[1.6rem] leading-none text-[color:var(--text)]">{f.count}</div>
+                  <div className="mt-2 text-[10.5px] leading-tight text-[color:var(--faint)]">{s.faculties[i]}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{s.facultyNote}</p>
+          </Reveal>
+        </Stagger>
+      </div>
     </section>
   );
 }
 
 function Achievements() {
+  const { t } = useApp();
   return (
-    <section className="mx-auto max-w-6xl px-5 py-24">
-      <SectionHead kicker="Kredensial" title={<>Prestasi yang <span className="gradient-text">terdokumentasi</span></>} />
-      <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
-        {achievements.map((a) => (
+    <section className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={t.achievements.kicker} title={t.achievements.title} />
+      <Stagger className="mt-14 md:ps-[228px]">
+        {t.achievements.items.map((a) => (
           <StaggerItem key={a.title}>
-            <div className="glass flex h-full flex-col rounded-2xl p-6">
-              <div className="chip inline-block w-fit px-2.5 py-1 text-[10px] uppercase tracking-wider text-amber-glow/90">
-                {a.tag}
+            <div className="grid grid-cols-1 gap-1.5 border-t border-[color:var(--line)] py-6 md:grid-cols-[1fr_auto] md:items-baseline md:gap-10">
+              <div>
+                <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{a.title}</h3>
+                <p className="mt-1 text-[13.5px] text-[color:var(--muted)]">{a.org}</p>
+                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[color:var(--gold)]">{a.tag}</p>
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold text-white">{a.title}</h3>
-              <p className="mt-1 text-sm text-white/55">{a.org}</p>
-              <div className="mt-auto pt-4 font-mono text-xs text-white/40">{a.date}</div>
+              <span className="shrink-0 font-mono text-[11px] text-[color:var(--faint)]">{a.date}</span>
             </div>
           </StaggerItem>
         ))}
@@ -229,54 +229,61 @@ function Achievements() {
 }
 
 function CTA() {
+  const { t } = useApp();
   return (
-    <section id="kontak" className="mx-auto max-w-6xl px-5 py-20">
-      <Reveal>
-        <div className="glass relative overflow-hidden rounded-3xl p-10 text-center md:p-16">
-          <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
-          <div className="relative">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
-              Bangun yang berikutnya <span className="gradient-text">bersama kami</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-lg text-white/60">
-              Mahasiswa UAJM yang ingin belajar membangun produk digital, atau mitra yang ingin berkolaborasi, silakan terhubung dengan kami.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href={links.instagramBcc} target="_blank" rel="noopener" className="btn-primary rounded-full px-6 py-3 text-sm">
-                Instagram @uajm_bcc
+    <section id="kontak" className="mt-8 border-y border-[color:var(--line-strong)]">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        <Reveal>
+          <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <span className="kicker">{t.cta.kicker}</span>
+              <h2 className="mt-4 max-w-xl font-display text-[2rem] leading-[1.12] tracking-[-0.02em] text-[color:var(--text)] md:text-[2.6rem]">
+                {t.cta.title}
+              </h2>
+              <p className="mt-4 max-w-lg text-[15px] leading-[1.7] text-[color:var(--muted)]">{t.cta.lede}</p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary px-6 py-3 text-[13px]">
+                {t.cta.join}
               </a>
-              <a href={links.github} target="_blank" rel="noopener" className="rounded-full border border-white/12 px-6 py-3 text-sm text-white/80 transition-colors hover:border-white/30 hover:text-white">
-                GitHub Founder
+              <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="btn-ghost px-6 py-3 text-[13px]">
+                {t.cta.instagram}
+              </a>
+              <a href={links.github} target="_blank" rel="noopener noreferrer" className="btn-ghost px-6 py-3 text-[13px]">
+                {t.cta.github}
               </a>
             </div>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }
 
 function Footer() {
+  const { t } = useApp();
   return (
-    <footer className="border-t border-white/6 px-5 py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-        <div className="flex items-center gap-3">
+    <footer className="mx-auto max-w-6xl px-6 py-14">
+      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
+        <div className="flex items-start gap-3">
           <LogoMark size={30} />
           <div>
-            <div className="font-display text-sm font-bold text-white">{org.name}</div>
-            <div className="text-xs text-white/40">{org.location}</div>
+            <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
+            <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/50">
-          <a href={links.instagramBcc} target="_blank" rel="noopener" className="hover:text-white">Instagram</a>
-          <a href={links.github} target="_blank" rel="noopener" className="hover:text-white">GitHub</a>
-          <a href={links.superteam} target="_blank" rel="noopener" className="hover:text-white">Superteam ID</a>
-          <a href={links.campus} target="_blank" rel="noopener" className="hover:text-white">UAJM</a>
-          <a href={`https://${org.domainEsport}`} target="_blank" rel="noopener" className="hover:text-white">UKM E-Sport ↗</a>
-        </div>
+        <nav className="flex flex-wrap gap-x-7 gap-y-2.5 font-mono text-[11px]">
+          <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="link-quiet">Instagram</a>
+          <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-quiet">GitHub</a>
+          <a href={links.superteam} target="_blank" rel="noopener noreferrer" className="link-quiet">Superteam ID</a>
+          <a href={links.campus} target="_blank" rel="noopener noreferrer" className="link-quiet">UAJM</a>
+          <a href={`https://${org.domainEsport}`} target="_blank" rel="noopener noreferrer" className="link-quiet">
+            UKM E-Sport ↗
+          </a>
+        </nav>
       </div>
-      <div className="mx-auto mt-8 max-w-6xl border-t border-white/6 pt-6 text-center text-xs text-white/30">
-        © {new Date().getFullYear()} {org.full}. Di bawah {org.parent}. Diinisiasi {org.initiatedBy}.
+      <div className="mt-10 border-t border-[color:var(--line)] pt-6 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">
+        © {new Date().getFullYear()} {org.full}. {t.footer.rights}
       </div>
     </footer>
   );

@@ -93,4 +93,6 @@ export const links = {
   github: "https://github.com/bryankwandou",
   superteam: "https://id.superteam.fun",
   campus: "https://uajm.ac.id",
+  // Direct join, no application form. Open Superteam x UAJM BCC WhatsApp group.
+  whatsapp: "https://chat.whatsapp.com/DOItAWJVPF1KdAfshk2uoD",
 };

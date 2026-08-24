@@ -1,49 +1,33 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         ink: {
-          950: "#05060B",
-          900: "#0A0B12",
-          800: "#11131E",
-          700: "#1A1D2E",
+          950: "#0A0A0B",
+          900: "#101013",
+          800: "#16161A",
         },
-        violet: {
-          glow: "#7C5CFF",
+        gold: {
+          DEFAULT: "#D8AC4E",
+          soft: "#E8BF67",
         },
-        cyan: {
-          glow: "#22D3EE",
-        },
-        amber: {
-          glow: "#FBBF24",
+        bone: {
+          DEFAULT: "#F0EEE8",
         },
       },
       fontFamily: {
-        display: ["var(--font-space)", "system-ui", "sans-serif"],
+        display: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        shimmer: {
-          "100%": { transform: "translateX(100%)" },
-        },
-        gridpan: {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "40px 40px" },
-        },
+      borderRadius: {
+        DEFAULT: "2px",
       },
-      animation: {
-        float: "float 6s ease-in-out infinite",
-        gridpan: "gridpan 20s linear infinite",
+      transitionTimingFunction: {
+        crisp: "cubic-bezier(0.2, 0.7, 0.3, 1)",
       },
     },
   },

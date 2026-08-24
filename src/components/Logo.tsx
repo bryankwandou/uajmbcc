@@ -1,26 +1,12 @@
-export function LogoMark({ size = 36 }: { size?: number }) {
+/* Typographic wordmark. Deliberately a lettermark rather than an invented
+   crest, so nothing here can be mistaken for an official institutional seal.
+   The genuine university seal is used separately, as-is. */
+export function LogoMark({ size = 34 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="bccg" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#22D3EE" />
-          <stop offset="1" stopColor="#7C5CFF" />
-        </linearGradient>
-      </defs>
-      {/* Outer hex block */}
-      <path
-        d="M24 3.5 41.7 13.75 V34.25 L24 44.5 6.3 34.25 V13.75 Z"
-        stroke="url(#bccg)"
-        strokeWidth="2"
-        fill="rgba(124,92,255,0.06)"
-      />
-      {/* Inner stacked blocks — the 'chain' */}
-      <rect x="16.5" y="15" width="8" height="8" rx="1.6" fill="url(#bccg)" />
-      <rect x="25.5" y="15" width="6" height="6" rx="1.4" fill="#22D3EE" opacity="0.55" />
-      <rect x="16.5" y="24.5" width="6" height="6" rx="1.4" fill="#7C5CFF" opacity="0.55" />
-      <rect x="24" y="24.5" width="8" height="8" rx="1.6" fill="url(#bccg)" />
-      {/* link node */}
-      <circle cx="24" cy="24" r="2.1" fill="#05060B" stroke="url(#bccg)" strokeWidth="1.4" />
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="0.6" y="0.6" width="38.8" height="38.8" rx="1.4" stroke="var(--line-strong)" />
+      <path d="M8 27.5V12.5h5.4c2.5 0 4 1.3 4 3.4 0 1.5-.8 2.6-2.1 3.1 1.6.4 2.6 1.6 2.6 3.3 0 2.4-1.7 3.9-4.4 3.9H8Z" fill="var(--text)" />
+      <path d="M21.5 20c0-4.4 3-7.7 7.2-7.7 1.6 0 3 .5 4.1 1.3l-1.5 2.6a4.3 4.3 0 0 0-2.5-.8c-2.3 0-4 1.9-4 4.6s1.7 4.6 4 4.6c1 0 1.9-.3 2.6-.9l1.5 2.6a7 7 0 0 1-4.2 1.4c-4.2 0-7.2-3.3-7.2-7.7Z" fill="var(--gold)" />
     </svg>
   );
 }
@@ -30,10 +16,12 @@ export function Logo() {
     <div className="flex items-center gap-2.5">
       <LogoMark />
       <div className="leading-none">
-        <div className="font-display text-[15px] font-bold tracking-tight text-white">
-          UAJM<span className="text-cyan-glow"> BCC</span>
+        <div className="font-display text-[17px] tracking-[-0.01em] text-[color:var(--text)]">
+          UAJM <span className="text-[color:var(--gold)]">BCC</span>
         </div>
-        <div className="text-[9px] uppercase tracking-[0.22em] text-white/40">Blockchain Club</div>
+        <div className="mt-1 font-mono text-[8.5px] uppercase tracking-[0.2em] text-[color:var(--faint)]">
+          Blockchain Club
+        </div>
       </div>
     </div>
   );
