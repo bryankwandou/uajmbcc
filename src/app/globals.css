@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #05060b;
+  --panel: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+  --violet: #7c5cff;
+  --cyan: #22d3ee;
+  --amber: #fbbf24;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: #e7e9f3;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Ambient gradient field behind everything */
+.bg-field {
+  background:
+    radial-gradient(60% 50% at 20% 10%, rgba(124, 92, 255, 0.18), transparent 60%),
+    radial-gradient(50% 45% at 85% 15%, rgba(34, 211, 238, 0.14), transparent 60%),
+    radial-gradient(45% 40% at 60% 90%, rgba(124, 92, 255, 0.10), transparent 60%),
+    var(--bg);
+}
+
+/* Fine dotted grid overlay */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #fff 10%, var(--cyan) 45%, var(--violet) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 9999px;
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.35), 0 0 40px -8px rgba(124, 92, 255, 0.45);
+}
+
+.btn-primary {
+  background: linear-gradient(100deg, var(--violet), var(--cyan));
+  color: #05060b;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px -12px rgba(124, 92, 255, 0.7);
+}
+
+/* Marquee */
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.4);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #05060b; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--violet), var(--cyan));
+  border-radius: 9999px;
+  border: 2px solid #05060b;
+}
