@@ -127,7 +127,7 @@ export const links = {
   instagramBcc: "https://instagram.com/uajm_bcc",
   instagramEsport: "https://instagram.com/uajm_esport",
   github: "https://github.com/bryankwandou",
-  superteam: "https://id.superteam.fun",
+  superteam: "https://superteam.fun",
   campus: "https://uajm.ac.id",
   // Direct join, no application form. Open Superteam x UAJM BCC WhatsApp group.
   whatsapp: "https://chat.whatsapp.com/DOItAWJVPF1KdAfshk2uoD",
