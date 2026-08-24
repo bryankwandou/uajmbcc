@@ -6,7 +6,7 @@ import { OnChainVerify } from "@/components/OnChainVerify";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { LogoMark } from "@/components/Logo";
 import { useApp } from "@/components/Providers";
-import { org, structure, faculties, links } from "@/lib/content";
+import { org, structure, faculties, links, contact } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -165,9 +165,13 @@ function Team() {
               {structure.lead.name}
             </div>
             <div className="mt-2 text-[13.5px] text-[color:var(--muted)]">{s.leadNote}</div>
-            <div className="mt-7 flex items-center gap-5 border-t border-[color:var(--line)] pt-6">
-              <Image src="/uajm-logo.png" alt="Segel Universitas Atma Jaya Makassar" width={40} height={40} className="shrink-0 object-contain" />
-              <Image src="/ukm-esport-logo.png" alt="Logo UKM E-Sport UAJM" width={40} height={40} className="shrink-0 object-contain" />
+            <div className="mt-7 flex items-center gap-4 border-t border-[color:var(--line)] pt-6">
+              <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/10">
+                <Image src="/uajm-logo.png" alt="Segel Universitas Atma Jaya Makassar" width={36} height={36} className="object-contain" />
+              </span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/10">
+                <Image src="/ukm-esport-logo.png" alt="Logo UKM E-Sport UAJM" width={38} height={38} className="object-contain" />
+              </span>
               <span className="font-mono text-[10px] leading-relaxed text-[color:var(--faint)]">
                 Atma Jaya Makassar
                 <br />
@@ -260,27 +264,59 @@ function CTA() {
 
 function Footer() {
   const { t } = useApp();
+  const c = t.contactBlock;
   return (
-    <footer className="mx-auto max-w-6xl px-6 py-14">
-      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
-        <div className="flex items-start gap-3">
-          <LogoMark size={30} />
-          <div>
-            <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
-            <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
+    <footer className="mx-auto max-w-6xl px-6 py-16">
+      <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_0.9fr]">
+        <div>
+          <div className="flex items-start gap-3">
+            <LogoMark size={34} />
+            <div>
+              <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
+              <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
+            </div>
+          </div>
+          <div className="mt-5 inline-block rounded-md bg-white p-3 ring-1 ring-black/10">
+            <Image
+              src="/superteam-campus-club.png"
+              alt="Superteam Campus Club, dikelola Universitas Atma Jaya Makassar"
+              width={220}
+              height={82}
+              className="h-auto w-[190px] object-contain"
+            />
           </div>
         </div>
-        <nav className="flex flex-wrap gap-x-7 gap-y-2.5 font-mono text-[11px]">
-          <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="link-quiet">Instagram</a>
-          <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-quiet">GitHub</a>
-          <a href={links.superteam} target="_blank" rel="noopener noreferrer" className="link-quiet">Superteam ID</a>
-          <a href={links.campus} target="_blank" rel="noopener noreferrer" className="link-quiet">UAJM</a>
-          <a href={`https://${org.domainEsport}`} target="_blank" rel="noopener noreferrer" className="link-quiet">
-            UKM E-Sport ↗
-          </a>
-        </nav>
+
+        <div>
+          <div className="kicker">{c.title}</div>
+          <address className="mt-4 space-y-2.5 text-[12.5px] not-italic leading-relaxed text-[color:var(--muted)]">
+            <div>{contact.address}</div>
+            <div>
+              {c.phone}{" "}
+              <a href={`tel:${contact.phone.replace(/[^0-9]/g, "")}`} className="link-quiet">{contact.phone}</a>
+            </div>
+            <div>
+              {c.whatsapp}{" "}
+              <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="link-quiet">{contact.whatsapp}</a>
+            </div>
+            <div>
+              <a href={contact.websiteHref} target="_blank" rel="noopener noreferrer" className="link-quiet">{contact.website}</a>
+            </div>
+          </address>
+        </div>
+
+        <div>
+          <div className="kicker">{c.links}</div>
+          <nav className="mt-4 flex flex-col gap-2.5 font-mono text-[11px]">
+            <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="link-quiet">{t.nav.join}</a>
+            <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="link-quiet">Instagram</a>
+            <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-quiet">GitHub</a>
+            <a href={links.superteam} target="_blank" rel="noopener noreferrer" className="link-quiet">Superteam ID</a>
+            <a href={`https://${org.domainEsport}`} target="_blank" rel="noopener noreferrer" className="link-quiet">UKM E-Sport ↗</a>
+          </nav>
+        </div>
       </div>
-      <div className="mt-10 border-t border-[color:var(--line)] pt-6 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">
+      <div className="mt-12 border-t border-[color:var(--line)] pt-6 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">
         © {new Date().getFullYear()} {org.full}. {t.footer.rights}
       </div>
     </footer>

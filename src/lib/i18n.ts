@@ -63,6 +63,7 @@ export type Dict = {
   achievements: { kicker: string; title: string; items: Ach[] };
   cta: { kicker: string; title: string; lede: string; join: string; instagram: string; github: string };
   footer: { rights: string };
+  contactBlock: { title: string; links: string; phone: string; whatsapp: string };
   proof: { toggle: string; blurb: string; slot: string; check: string; checking: string; status: string; balance: string; program: string; owner: string; found: string; notFound: string; yes: string; no: string; rpcError: string };
   a11y: { theme: string; language: string };
 };
@@ -145,6 +146,7 @@ const id: Dict = {
     join: "Gabung grup WhatsApp", instagram: "Instagram", github: "GitHub",
   },
   footer: { rights: "Di bawah UKM E-Sport UAJM. Diinisiasi Superteam Campus Club, Superteam Indonesia." },
+  contactBlock: { title: "Kontak & Alamat", links: "Tautan", phone: "Telp", whatsapp: "WhatsApp" },
   proof: {
     toggle: "Bukti teknis: verifikasi jaringan Solana",
     blurb: "Panel ini memanggil RPC publik secara langsung sebagai bukti bahwa produk berjalan di jaringan, bukan mock.",
@@ -232,6 +234,7 @@ const en: Dict = {
     join: "Join the WhatsApp group", instagram: "Instagram", github: "GitHub",
   },
   footer: { rights: "Under UKM E-Sport UAJM. Initiated by Superteam Campus Club, Superteam Indonesia." },
+  contactBlock: { title: "Contact & Address", links: "Links", phone: "Tel", whatsapp: "WhatsApp" },
   proof: {
     toggle: "Technical proof: Solana network verification",
     blurb: "This panel calls the public RPC directly, as evidence the product runs on the network rather than on mocks.",

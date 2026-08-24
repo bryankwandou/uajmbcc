@@ -96,3 +96,13 @@ export const links = {
   // Direct join, no application form. Open Superteam x UAJM BCC WhatsApp group.
   whatsapp: "https://chat.whatsapp.com/DOItAWJVPF1KdAfshk2uoD",
 };
+
+// Verified from the official UKM E-Sport UAJM proposal letterhead (kop surat).
+export const contact = {
+  address: "Jl. Tanjung Alang No. 23, Makassar, Sulawesi Selatan 90134",
+  phone: "(0411) 871038",
+  whatsapp: "+62 813-5504-9802",
+  whatsappHref: "https://wa.me/6281355049802",
+  website: "www.uajm.ac.id",
+  websiteHref: "https://uajm.ac.id",
+};

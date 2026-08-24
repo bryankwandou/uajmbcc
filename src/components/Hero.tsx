@@ -78,13 +78,15 @@ export function Hero() {
           >
             <div className="flex items-center justify-between gap-4 border-b border-[color:var(--line)] pb-4">
               <span className="kicker">{h.recordTitle}</span>
-              <Image
-                src="/uajm-logo.png"
-                alt="Segel Universitas Atma Jaya Makassar"
-                width={34}
-                height={34}
-                className="shrink-0 object-contain"
-              />
+              <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/10">
+                <Image
+                  src="/uajm-logo.png"
+                  alt="Segel Universitas Atma Jaya Makassar"
+                  width={30}
+                  height={30}
+                  className="object-contain"
+                />
+              </span>
             </div>
             <dl className="mt-5 space-y-4 font-mono text-[11px]">
               {rows.map((r) => (
@@ -94,6 +96,17 @@ export function Hero() {
                 </div>
               ))}
             </dl>
+
+            {/* Official club identity, real logos only. */}
+            <div className="mt-6 rounded-md bg-white p-4 ring-1 ring-black/10">
+              <Image
+                src="/superteam-campus-club.png"
+                alt="Superteam Campus Club, dikelola Universitas Atma Jaya Makassar"
+                width={320}
+                height={120}
+                className="h-auto w-full object-contain"
+              />
+            </div>
           </motion.aside>
         </div>
 
