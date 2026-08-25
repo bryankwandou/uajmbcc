@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers, noFlashScript } from "@/components/Providers";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif" });
+const sans = Instrument_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" dir="ltr" data-theme="dark" className={`${inter.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="id" dir="ltr" data-theme="light" className={`${sans.variable} ${display.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         {/* Static, self-authored string built from fixed constants. */}
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />

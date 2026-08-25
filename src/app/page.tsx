@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { BrandChip } from "@/components/Logo";
+import { Credentials } from "@/components/Credentials";
 import { useApp } from "@/components/Providers";
 import { org, structure, faculties, links, contact, mvps } from "@/lib/content";
 
@@ -53,7 +54,7 @@ function Ticker() {
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--faint)]">
             <span>{w}</span>
-            <span className="text-[color:var(--gold)] opacity-60">/</span>
+            <span className="text-[color:var(--accent)] opacity-60">/</span>
           </span>
         ))}
       </div>
@@ -68,7 +69,7 @@ function About() {
       <SectionHead kicker={t.about.kicker} title={t.about.title} />
 
       <Reveal className="mt-14 md:ps-[228px]">
-        <blockquote className="max-w-3xl border-s-2 border-[color:var(--gold)] ps-7">
+        <blockquote className="max-w-3xl border-s-2 border-[color:var(--accent)] ps-7">
           <p className="font-display text-[1.6rem] leading-[1.35] tracking-[-0.01em] text-[color:var(--text)] md:text-[2.1rem]">
             {t.about.vision}
           </p>
@@ -79,7 +80,7 @@ function About() {
         {t.about.missions.map((m, i) => (
           <StaggerItem key={m.title}>
             <div className="grid grid-cols-[36px_1fr] gap-5 border-t border-[color:var(--line)] py-7 md:grid-cols-[52px_240px_1fr] md:gap-8">
-              <span className="font-mono text-[11px] text-[color:var(--gold)]">0{i + 1}</span>
+              <span className="font-mono text-[11px] text-[color:var(--accent)]">0{i + 1}</span>
               <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{m.title}</h3>
               <p className="col-span-2 text-[14px] leading-[1.7] text-[color:var(--muted)] md:col-span-1">{m.body}</p>
             </div>
@@ -113,7 +114,7 @@ function Portfolio() {
               rel="noopener noreferrer"
               className="group grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:background-color] hover:bg-[color:var(--surface)] md:grid-cols-[52px_1.15fr_0.55fr_150px] md:items-baseline md:gap-6"
             >
-              <span className="font-mono text-[11px] text-[color:var(--gold)]">{item.code}</span>
+              <span className="font-mono text-[11px] text-[color:var(--accent)]">{item.code}</span>
               <div>
                 <h3 className="font-display text-xl leading-tight text-[color:var(--text)]">
                   {item.title}
@@ -153,7 +154,7 @@ function Journey() {
         {t.journey.items.map((item, i) => (
           <Reveal key={item.title} delay={i * 0.05}>
             <div className="grid grid-cols-1 gap-2 border-t border-[color:var(--line)] py-7 md:grid-cols-[136px_1fr] md:gap-10">
-              <div className="font-mono text-[11px] text-[color:var(--gold)]">{item.date}</div>
+              <div className="font-mono text-[11px] text-[color:var(--accent)]">{item.date}</div>
               <div>
                 <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{item.title}</h3>
                 <p className="mt-2 max-w-xl text-[14px] leading-[1.7] text-[color:var(--muted)]">{item.body}</p>
@@ -228,20 +229,15 @@ function Achievements() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-28">
       <SectionHead kicker={t.achievements.kicker} title={t.achievements.title} />
-      <Stagger className="mt-14 md:ps-[228px]">
-        {t.achievements.items.map((a) => (
-          <StaggerItem key={a.title}>
-            <div className="grid grid-cols-1 gap-1.5 border-t border-[color:var(--line)] py-6 md:grid-cols-[1fr_auto] md:items-baseline md:gap-10">
-              <div>
-                <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{a.title}</h3>
-                <p className="mt-1 text-[13.5px] text-[color:var(--muted)]">{a.org}</p>
-                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[color:var(--gold)]">{a.tag}</p>
-              </div>
-              <span className="shrink-0 font-mono text-[11px] text-[color:var(--faint)]">{a.date}</span>
-            </div>
-          </StaggerItem>
-        ))}
-      </Stagger>
+      <Credentials
+        labels={{
+          hackTitle: t.achievements.hackTitle,
+          hackBody: t.achievements.hackBody,
+          hackHolder: t.achievements.hackHolder,
+          shipped: t.achievements.shipped,
+          open: t.achievements.open,
+        }}
+      />
     </section>
   );
 }

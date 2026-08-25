@@ -2,44 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Direction: luxury/refined institutional.
-   Ink base, single gold accent drawn from the Universitas Atma Jaya Makassar
-   seal, serif display. Deliberately avoids the violet/cyan web3 default. */
+/* Direction: institutional builder lab.
+   The palette is taken from the club's own marks: the cobalt and yellow of the
+   Universitas Atma Jaya Makassar seal, set against a cool blue-biased neutral
+   that matches the heavy geometric black wordmark of Superteam Campus Club.
+   Deliberately not warm cream with a serif and a gold accent, and not the
+   violet/cyan web3 default. */
 :root,
-:root[data-theme="dark"] {
-  --bg: #0a0a0b;
-  --surface: #101013;
-  --surface-2: #16161a;
-  --line: rgba(240, 238, 232, 0.09);
-  --line-strong: rgba(240, 238, 232, 0.16);
-  --text: #f0eee8;
-  --muted: rgba(240, 238, 232, 0.52);
-  --faint: rgba(240, 238, 232, 0.34);
-  --gold: #d8ac4e;
-  --on-gold: #14100a;
-  --field: #0a0a0b;
-  --halo: rgba(216, 172, 78, 0.07);
-  --scroll-thumb: rgba(240, 238, 232, 0.16);
-  color-scheme: dark;
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #edf1f8;
+  --line: rgba(10, 16, 32, 0.14);
+  --line-strong: rgba(10, 16, 32, 0.3);
+  --text: #0a1020;
+  --muted: rgba(10, 16, 32, 0.7);
+  --faint: rgba(10, 16, 32, 0.52);
+  --accent: #1a3fd0;
+  --accent-solid: #1a3fd0;
+  --on-accent: #ffffff;
+  --seal: #f5c518;
+  --on-seal: #0a1020;
+  --field: #ffffff;
+  --halo: rgba(26, 63, 208, 0.07);
+  --scroll-thumb: rgba(10, 16, 32, 0.28);
+  color-scheme: light;
 }
 
-/* Light is a warm paper theme, not an inverted dark theme. Every token is
-   redefined so no value can leak across and leave text on a matching ground. */
-:root[data-theme="light"] {
-  --bg: #f7f5f0;
-  --surface: #ffffff;
-  --surface-2: #fbfaf7;
-  --line: rgba(26, 22, 15, 0.12);
-  --line-strong: rgba(26, 22, 15, 0.22);
-  --text: #1a160f;
-  --muted: rgba(26, 22, 15, 0.66);
-  --faint: rgba(26, 22, 15, 0.5);
-  --gold: #9a6f16;
-  --on-gold: #fffdf7;
-  --field: #f7f5f0;
-  --halo: rgba(154, 111, 22, 0.08);
-  --scroll-thumb: rgba(26, 22, 15, 0.22);
-  color-scheme: light;
+/* Dark is a deep navy, not a brown-black. Every token is redefined so no value
+   can leak across and leave text sitting on a matching ground. */
+:root[data-theme="dark"] {
+  --bg: #070b14;
+  --surface: #101828;
+  --surface-2: #16203a;
+  --line: rgba(232, 238, 251, 0.14);
+  --line-strong: rgba(232, 238, 251, 0.28);
+  --text: #e8eefb;
+  --muted: rgba(232, 238, 251, 0.72);
+  --faint: rgba(232, 238, 251, 0.5);
+  --accent: #7aa5ff;
+  --accent-solid: #7aa5ff;
+  --on-accent: #070b14;
+  --seal: #f5c518;
+  --on-seal: #0a1020;
+  --field: #070b14;
+  --halo: rgba(122, 165, 255, 0.09);
+  --scroll-thumb: rgba(232, 238, 251, 0.24);
+  color-scheme: dark;
 }
 
 * {
@@ -68,14 +77,13 @@ body {
   animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
-/* Restrained ground. One warm pool of light, top-left. No rainbow field. */
+/* Restrained ground. One cool pool of light, top-left. No rainbow field. */
 .bg-field {
   background:
     radial-gradient(70% 50% at 12% 0%, var(--halo), transparent 62%),
     var(--bg);
 }
 
-/* Ruled paper, not a neon grid */
 .rule-top {
   border-top: 1px solid var(--line);
 }
@@ -85,7 +93,7 @@ body {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 /* Surfaces are differentiated by role, not one glass class everywhere. */
@@ -107,22 +115,31 @@ body {
   border-radius: 2px;
 }
 
+/* A solid block of the seal yellow, carrying dark text. Used sparingly, as the
+   one place the page raises its voice. */
+.panel-seal {
+  background-color: var(--seal);
+  color: var(--on-seal);
+  border: none;
+  border-radius: 2px;
+}
+
 .accent-rule {
   width: 34px;
-  height: 2px;
-  background-color: var(--gold);
+  height: 3px;
+  background-color: var(--accent);
 }
 
 .btn-primary {
-  background-color: var(--gold);
-  color: var(--on-gold);
+  background-color: var(--accent-solid);
+  color: var(--on-accent);
   font-weight: 600;
   border-radius: 2px;
-  transition: background-color 220ms cubic-bezier(0.2, 0.7, 0.3, 1),
+  transition: filter 220ms cubic-bezier(0.2, 0.7, 0.3, 1),
     transform 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .btn-primary:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.1);
   transform: translateY(-1px);
 }
 
@@ -134,8 +151,8 @@ body {
     background-color 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .btn-ghost:hover {
-  border-color: var(--gold);
-  background-color: color-mix(in srgb, var(--gold) 8%, transparent);
+  border-color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .link-quiet {
@@ -155,7 +172,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--gold) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
   color: var(--text);
 }
 
@@ -165,7 +182,7 @@ body {
   background: var(--scroll-thumb);
   border-radius: 0;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
@@ -173,3 +190,11 @@ body {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
 }
+
+/* The brand lockup ships as two variants of the same approved artwork. Only the
+   one matching the active theme is painted; the other is removed from layout so
+   neither leaves a gap. */
+.dark-hidden { display: block; }
+.light-hidden { display: none; }
+:root[data-theme="dark"] .dark-hidden { display: none; }
+:root[data-theme="dark"] .light-hidden { display: block; }

@@ -123,6 +123,40 @@ export const faculties = [
   { name: "Hukum", count: 4 },
 ];
 
+/* Credential scans held on file. Only the two that bear on a builder club are
+   published here: the international business case competition and the branding
+   certification. The Mobile Legends tournament scans belong to UKM E-Sport and
+   are published on that site instead. */
+export const credentials = [
+  {
+    src: "/certs/efortion-enspirit-2024.jpg",
+    title: "E-Fortion 5.0, ENSPIRIT 5.0",
+    org: "IBM Student Union, Universitas Ciputra",
+    tag: "International Business Case Competition",
+    ref: "186/UC-SUIBM/CERTIFICATE/III/2024",
+    date: "25 Feb 2024",
+  },
+  {
+    src: "/certs/personal-branding-kadev.jpg",
+    title: "Personal Branding Academy",
+    org: "Kadev Co.",
+    tag: "Certificate of Completion",
+    date: "31 Jul 2026",
+  },
+];
+
+/* Hackathon record. The count is the PIC's own portfolio figure and is
+   presented as such, with the public repository as the checkable trail. The six
+   shipped MVPs are the output that can be opened and inspected directly. */
+export const hackathon = {
+  count: 30,
+  countNote: "hackathon diikuti sepanjang 2024 sampai 2026",
+  holder: "Vincentius Bryan Kwandou",
+  repo: "https://github.com/bryankwandou",
+  repoLabel: "github.com/bryankwandou",
+  shipped: 6,
+};
+
 export const links = {
   instagramBcc: "https://instagram.com/uajm_bcc",
   instagramEsport: "https://instagram.com/uajm_esport",

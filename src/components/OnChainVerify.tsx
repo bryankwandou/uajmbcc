@@ -115,7 +115,7 @@ export function OnChainVerify() {
               autoComplete="off"
               maxLength={64}
               dir="ltr"
-              className="min-w-0 flex-1 rounded border border-[color:var(--line)] bg-[color:var(--bg)] px-3 py-2 font-mono text-[11px] text-[color:var(--text)] outline-none focus-visible:border-[color:var(--gold)]"
+              className="min-w-0 flex-1 rounded border border-[color:var(--line)] bg-[color:var(--bg)] px-3 py-2 font-mono text-[11px] text-[color:var(--text)] outline-none focus-visible:border-[color:var(--accent)]"
             />
             <button onClick={lookup} disabled={loading} className="btn-ghost shrink-0 px-4 py-2 text-[11px] disabled:opacity-50">
               {loading ? `${p.checking}…` : p.check}

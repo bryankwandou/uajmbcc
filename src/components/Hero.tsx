@@ -42,7 +42,7 @@ export function Hero() {
             >
               {h.title1}
               <br />
-              {h.title2} <em className="italic text-[color:var(--gold)]">{h.titleEm}</em>
+              {h.title2} <em className="italic text-[color:var(--accent)]">{h.titleEm}</em>
             </motion.h1>
 
             <motion.p

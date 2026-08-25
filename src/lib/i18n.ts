@@ -59,7 +59,7 @@ export type Dict = {
     divisions: { name: string; focus: string }[];
     faculties: string[]; facultyNote: string;
   };
-  achievements: { kicker: string; title: string; items: Ach[] };
+  achievements: { kicker: string; title: string; items: Ach[]; hackTitle: string; hackBody: string; hackHolder: string; shipped: string; open: string };
   cta: { kicker: string; title: string; lede: string; join: string; instagram: string; github: string };
   footer: { rights: string };
   contactBlock: { title: string; links: string; phone: string; whatsapp: string };
@@ -124,7 +124,10 @@ const id: Dict = {
     facultyNote: "Komposisi lintas fakultas dari data pendaftaran resmi.",
   },
   achievements: {
-    kicker: "Kredensial", title: "Prestasi yang terdokumentasi",
+    kicker: "Kredensial", title: "Dua sertifikat dan catatan hackathon",
+    hackTitle: "Catatan hackathon", hackHolder: "Atas nama",
+    hackBody: "Hackathon yang diikuti sepanjang 2024 sampai 2026. Angka ini berasal dari portofolio PIC, bukan sertifikat tunggal, dan jejaknya dapat diperiksa di repositori publik.",
+    shipped: "MVP mahasiswa selesai dan dapat dibuka", open: "Perbesar sertifikat",
     items: [
       { title: "E-Fortion 5.0, ENSPIRIT 5.0", org: "IBM Student Union, Universitas Ciputra", tag: "International Business Case Competition", date: "25 Feb 2024" },
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
@@ -204,7 +207,10 @@ const en: Dict = {
     facultyNote: "Cross-faculty composition drawn from official registration data.",
   },
   achievements: {
-    kicker: "Credentials", title: "Documented achievements",
+    kicker: "Credentials", title: "Two certificates and a hackathon record",
+    hackTitle: "Hackathon record", hackHolder: "In the name of",
+    hackBody: "Hackathons entered between 2024 and 2026. This figure comes from the PIC's own portfolio rather than a single certificate, and the trail can be checked in the public repository.",
+    shipped: "student MVPs completed and open to inspection", open: "Enlarge certificate",
     items: [
       { title: "E-Fortion 5.0, ENSPIRIT 5.0", org: "IBM Student Union, Universitas Ciputra", tag: "International Business Case Competition", date: "25 Feb 2024" },
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
