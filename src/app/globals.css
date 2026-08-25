@@ -110,7 +110,7 @@ body {
 }
 
 .panel-feature {
-  background-image: linear-gradient(180deg, var(--surface-2), var(--surface));
+  background-color: var(--surface-2);
   border: 1px solid var(--line-strong);
   border-radius: 2px;
 }

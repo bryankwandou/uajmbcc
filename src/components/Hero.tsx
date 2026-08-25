@@ -89,7 +89,7 @@ export function Hero() {
             </dl>
 
             {/* Official club identity, real logos only. */}
-            <div className="mt-6 rounded-md bg-white p-4 ring-1 ring-black/10">
+            <div className="mt-6 rounded bg-white p-4 ring-1 ring-black/10">
               <Image
                 src="/superteam-campus-club.png"
                 alt="Superteam Campus Club, dikelola Universitas Atma Jaya Makassar"
