@@ -54,7 +54,7 @@ function Ticker() {
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--faint)]">
             <span>{w}</span>
-            <span className="text-[color:var(--accent)] opacity-60">/</span>
+            <span aria-hidden="true" className="text-[color:var(--accent)] opacity-80">/</span>
           </span>
         ))}
       </div>
