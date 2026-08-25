@@ -17,7 +17,7 @@
   --line-strong: rgba(10, 16, 32, 0.3);
   --text: #0a1020;
   --muted: rgba(10, 16, 32, 0.7);
-  --faint: rgba(10, 16, 32, 0.52);
+  --faint: rgba(10, 16, 32, 0.62);
   --accent: #1a3fd0;
   --accent-solid: #1a3fd0;
   --on-accent: #ffffff;
@@ -39,7 +39,7 @@
   --line-strong: rgba(232, 238, 251, 0.28);
   --text: #e8eefb;
   --muted: rgba(232, 238, 251, 0.72);
-  --faint: rgba(232, 238, 251, 0.5);
+  --faint: rgba(232, 238, 251, 0.62);
   --accent: #7aa5ff;
   --accent-solid: #7aa5ff;
   --on-accent: #070b14;
