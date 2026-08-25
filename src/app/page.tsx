@@ -70,7 +70,7 @@ function About() {
 
       <Reveal className="mt-14 md:ps-[228px]">
         <blockquote className="max-w-3xl border-s-2 border-[color:var(--accent)] ps-7">
-          <p className="font-display text-[1.6rem] leading-[1.35] tracking-[-0.01em] text-[color:var(--text)] md:text-[2.1rem]">
+          <p className="font-display text-[1.6rem] leading-[1.35] tracking-[-0.01em] text-[color:var(--text)] md:text-[2rem]">
             {t.about.vision}
           </p>
         </blockquote>
@@ -81,8 +81,8 @@ function About() {
           <StaggerItem key={m.title}>
             <div className="grid grid-cols-[36px_1fr] gap-5 border-t border-[color:var(--line)] py-7 md:grid-cols-[52px_240px_1fr] md:gap-8">
               <span className="font-mono text-[11px] text-[color:var(--accent)]">0{i + 1}</span>
-              <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{m.title}</h3>
-              <p className="col-span-2 text-[14px] leading-[1.7] text-[color:var(--muted)] md:col-span-1">{m.body}</p>
+              <h3 className="font-display text-[18px] leading-snug text-[color:var(--text)]">{m.title}</h3>
+              <p className="col-span-2 text-[15px] leading-[1.7] text-[color:var(--muted)] md:col-span-1">{m.body}</p>
             </div>
           </StaggerItem>
         ))}
@@ -116,16 +116,16 @@ function Portfolio() {
             >
               <span className="font-mono text-[11px] text-[color:var(--accent)]">{item.code}</span>
               <div>
-                <h3 className="font-display text-xl leading-tight text-[color:var(--text)]">
+                <h3 className="font-display text-[18px] leading-tight text-[color:var(--text)]">
                   {item.title}
                   <span className="ms-2 inline-block font-mono text-[10px] uppercase tracking-wider text-[color:var(--faint)] opacity-0 duration-200 [transition-property:opacity] group-hover:opacity-100">
                     {item.href.replace("https://", "")} ↗
                   </span>
                 </h3>
-                <p className="mt-1.5 max-w-md text-[13.5px] leading-[1.65] text-[color:var(--muted)]">
+                <p className="mt-1.5 max-w-md text-[13px] leading-[1.65] text-[color:var(--muted)]">
                   {en ? item.descEn : item.desc}
                 </p>
-                <p className="mt-1.5 font-mono text-[10.5px] text-[color:var(--faint)]">
+                <p className="mt-1.5 font-mono text-[11px] text-[color:var(--faint)]">
                   {en ? item.byEn : item.by} · PIC: Vincentius Bryan Kwandou
                 </p>
               </div>
@@ -139,7 +139,7 @@ function Portfolio() {
       </Stagger>
 
       <Reveal>
-        <p className="mt-6 max-w-2xl font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{p.note}</p>
+        <p className="mt-6 max-w-2xl font-mono text-[11px] leading-relaxed text-[color:var(--faint)]">{p.note}</p>
       </Reveal>
     </section>
   );
@@ -156,8 +156,8 @@ function Journey() {
             <div className="grid grid-cols-1 gap-2 border-t border-[color:var(--line)] py-7 md:grid-cols-[136px_1fr] md:gap-10">
               <div className="font-mono text-[11px] text-[color:var(--accent)]">{item.date}</div>
               <div>
-                <h3 className="font-display text-lg leading-snug text-[color:var(--text)]">{item.title}</h3>
-                <p className="mt-2 max-w-xl text-[14px] leading-[1.7] text-[color:var(--muted)]">{item.body}</p>
+                <h3 className="font-display text-[18px] leading-snug text-[color:var(--text)]">{item.title}</h3>
+                <p className="mt-2 max-w-xl text-[15px] leading-[1.7] text-[color:var(--muted)]">{item.body}</p>
               </div>
             </div>
           </Reveal>
@@ -178,10 +178,10 @@ function Team() {
         <Reveal>
           <div className="panel-feature p-7">
             <span className="kicker">{s.leadRole}</span>
-            <div className="mt-3 font-display text-[1.75rem] leading-tight text-[color:var(--text)]">
+            <div className="mt-3 font-display text-[1.6rem] leading-tight text-[color:var(--text)]">
               {structure.lead.name}
             </div>
-            <div className="mt-2 text-[13.5px] text-[color:var(--muted)]">{s.leadNote}</div>
+            <div className="mt-2 text-[13px] text-[color:var(--muted)]">{s.leadNote}</div>
             <div className="mt-7 flex items-center gap-4 border-t border-[color:var(--line)] pt-6">
               <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/10">
                 <Image src="/uajm-logo.png" alt="Segel Universitas Atma Jaya Makassar" width={36} height={36} className="object-contain" />
@@ -202,8 +202,8 @@ function Team() {
           {s.divisions.map((d) => (
             <StaggerItem key={d.name}>
               <div className="flex items-baseline justify-between gap-6 border-t border-[color:var(--line)] py-5">
-                <h3 className="font-display text-[17px] text-[color:var(--text)]">{d.name}</h3>
-                <span className="shrink-0 font-mono text-[10.5px] text-[color:var(--faint)]">{d.focus}</span>
+                <h3 className="font-display text-[15px] text-[color:var(--text)]">{d.name}</h3>
+                <span className="shrink-0 font-mono text-[11px] text-[color:var(--faint)]">{d.focus}</span>
               </div>
             </StaggerItem>
           ))}
@@ -212,11 +212,11 @@ function Team() {
               {faculties.map((f, i) => (
                 <div key={f.name}>
                   <div className="font-mono text-[1.6rem] leading-none text-[color:var(--text)]">{f.count}</div>
-                  <div className="mt-2 text-[10.5px] leading-tight text-[color:var(--faint)]">{s.faculties[i]}</div>
+                  <div className="mt-2 text-[11px] leading-tight text-[color:var(--faint)]">{s.faculties[i]}</div>
                 </div>
               ))}
             </div>
-            <p className="mt-4 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">{s.facultyNote}</p>
+            <p className="mt-4 font-mono text-[11px] leading-relaxed text-[color:var(--faint)]">{s.facultyNote}</p>
           </Reveal>
         </Stagger>
       </div>
@@ -284,13 +284,13 @@ function Footer() {
           <BrandChip height={34} />
           <div className="mt-4">
             <div className="font-display text-[15px] text-[color:var(--text)]">{org.name}</div>
-            <div className="mt-1 font-mono text-[10.5px] text-[color:var(--faint)]">{org.location}</div>
+            <div className="mt-1 font-mono text-[11px] text-[color:var(--faint)]">{org.location}</div>
           </div>
         </div>
 
         <div>
           <div className="kicker">{c.title}</div>
-          <address className="mt-4 space-y-2.5 text-[12.5px] not-italic leading-relaxed text-[color:var(--muted)]">
+          <address className="mt-4 space-y-2.5 text-[13px] not-italic leading-relaxed text-[color:var(--muted)]">
             <div>{contact.address}</div>
             <div>
               {c.phone}{" "}
@@ -317,7 +317,7 @@ function Footer() {
           </nav>
         </div>
       </div>
-      <div className="mt-12 border-t border-[color:var(--line)] pt-6 font-mono text-[10.5px] leading-relaxed text-[color:var(--faint)]">
+      <div className="mt-12 border-t border-[color:var(--line)] pt-6 font-mono text-[11px] leading-relaxed text-[color:var(--faint)]">
         © {new Date().getFullYear()} {org.full}. {t.footer.rights}
       </div>
     </footer>

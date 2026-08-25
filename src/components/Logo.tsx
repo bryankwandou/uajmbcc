@@ -54,7 +54,7 @@ export function Logo() {
         <div className="whitespace-nowrap font-display text-[15px] font-extrabold tracking-[-0.02em] text-[color:var(--text)]">
           UAJM <span className="text-[color:var(--accent)]">BCC</span>
         </div>
-        <div className="mt-1 whitespace-nowrap font-mono text-[8px] uppercase tracking-[0.2em] text-[color:var(--faint)]">
+        <div className="mt-1 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--faint)]">
           Blockchain Club
         </div>
       </div>

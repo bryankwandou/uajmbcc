@@ -57,7 +57,7 @@ export function Nav() {
 
         <div className="flex shrink-0 items-center gap-2.5">
           <Controls />
-          <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary hidden px-4 py-2 text-[12px] sm:inline-block">
+          <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary hidden px-4 py-2 text-[13px] sm:inline-block">
             {t.nav.join}
           </a>
           <button
@@ -77,7 +77,7 @@ export function Nav() {
         <div className="border-t border-[color:var(--line)] bg-[color:var(--bg)] px-6 py-5 lg:hidden">
           <div className="flex flex-col gap-4">
             {items.map((i) => (
-              <a key={i.href} href={i.href} onClick={() => setOpen(false)} className="link-quiet text-sm">
+              <a key={i.href} href={i.href} onClick={() => setOpen(false)} className="link-quiet text-[15px]">
                 {i.label}
               </a>
             ))}

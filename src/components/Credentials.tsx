@@ -62,24 +62,24 @@ export function Credentials({
       <div className="panel-seal flex flex-col justify-between p-6">
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">{labels.hackTitle}</div>
-          <div className="mt-3 font-display text-[3.4rem] font-extrabold leading-none tracking-[-0.03em]">
+          <div className="mt-3 font-display text-[2.75rem] font-extrabold leading-none tracking-[-0.03em]">
             ~{hackathon.count}
           </div>
-          <p className="mt-3 text-[13.5px] leading-relaxed">{labels.hackBody}</p>
+          <p className="mt-3 text-[13px] leading-relaxed">{labels.hackBody}</p>
         </div>
         <div className="mt-6 border-t border-black/20 pt-4">
-          <p className="font-mono text-[10.5px] leading-relaxed">
+          <p className="font-mono text-[11px] leading-relaxed">
             {labels.hackHolder}: {hackathon.holder}
           </p>
           <a
             href={hackathon.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-block font-mono text-[10.5px] underline underline-offset-2"
+            className="mt-2 inline-block font-mono text-[11px] underline underline-offset-2"
           >
             {hackathon.repoLabel}
           </a>
-          <p className="mt-2 font-mono text-[10.5px]">
+          <p className="mt-2 font-mono text-[11px]">
             {hackathon.shipped} {labels.shipped}
           </p>
         </div>
@@ -102,8 +102,8 @@ export function Credentials({
               className="h-auto w-full rounded object-contain"
             />
             <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3 text-white/80">
-              <span className="font-display text-sm font-bold">{active.title}</span>
-              <span className="font-mono text-xs">{active.org} · {active.date}</span>
+              <span className="font-display text-[15px] font-bold">{active.title}</span>
+              <span className="font-mono text-[13px]">{active.org} · {active.date}</span>
             </div>
           </div>
           <button
