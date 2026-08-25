@@ -112,7 +112,7 @@ function Portfolio() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:background-color] hover:bg-[color:var(--surface)] md:grid-cols-[52px_1.15fr_0.55fr_150px] md:items-baseline md:gap-6"
+              className="group grid grid-cols-1 gap-2 border-b border-[color:var(--line)] py-6 duration-300 ease-crisp [transition-property:opacity] hover:bg-[color:var(--surface)] md:grid-cols-[52px_1.15fr_0.55fr_150px] md:items-baseline md:gap-6"
             >
               <span className="font-mono text-[11px] text-[color:var(--accent)]">{item.code}</span>
               <div>

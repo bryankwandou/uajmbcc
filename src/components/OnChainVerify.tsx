@@ -89,7 +89,7 @@ export function OnChainVerify() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 font-mono text-[10.5px] text-[color:var(--faint)] duration-200 ease-crisp [transition-property:color] hover:text-[color:var(--text)]"
+        className="flex items-center gap-2 font-mono text-[10.5px] text-[color:var(--faint)] duration-200 ease-crisp [transition-property:opacity] hover:text-[color:var(--text)]"
         aria-expanded={open}
       >
         <span className={`inline-block duration-200 ease-crisp [transition-property:transform] ${open ? "rotate-90" : ""}`}>

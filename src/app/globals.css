@@ -143,12 +143,14 @@ body {
   transform: translateY(-1px);
 }
 
+/* Hover feedback rides on opacity and transform, never on a colour read from a
+   custom property: transitioning such a value leaves a stale paint in Chromium
+   when the property is redefined on :root during a theme swap. */
 .btn-ghost {
   border: 1px solid var(--line-strong);
   border-radius: 2px;
   color: var(--text);
-  transition: border-color 220ms cubic-bezier(0.2, 0.7, 0.3, 1),
-    background-color 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .btn-ghost:hover {
   border-color: var(--accent);
@@ -156,11 +158,12 @@ body {
 }
 
 .link-quiet {
-  color: var(--muted);
-  transition: color 180ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  color: var(--text);
+  opacity: 0.68;
+  transition: opacity 180ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .link-quiet:hover {
-  color: var(--text);
+  opacity: 1;
 }
 
 .marquee-track {

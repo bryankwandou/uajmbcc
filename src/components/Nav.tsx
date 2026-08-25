@@ -36,7 +36,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 duration-300 ease-crisp [transition-property:background-color,border-color,backdrop-filter] ${
+      className={`fixed inset-x-0 top-0 z-50 duration-300 ease-crisp [transition-property:opacity] ${
         scrolled || open
           ? "border-b border-[color:var(--line)] bg-[color:var(--bg)]/90 backdrop-blur-md"
           : "border-b border-transparent"
