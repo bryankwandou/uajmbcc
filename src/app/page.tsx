@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
@@ -8,6 +9,7 @@ import { BrandChip } from "@/components/Logo";
 import { Credentials } from "@/components/Credentials";
 import { useApp } from "@/components/Providers";
 import { org, structure, faculties, links, contact, mvps } from "@/lib/content";
+import { certDict } from "@/lib/certdict";
 
 export default function Home() {
   return (
@@ -275,7 +277,7 @@ function CTA() {
 }
 
 function Footer() {
-  const { t } = useApp();
+  const { t, locale } = useApp();
   const c = t.contactBlock;
   return (
     <footer className="mx-auto max-w-6xl px-6 py-16">
@@ -314,6 +316,10 @@ function Footer() {
             <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-quiet">GitHub</a>
             <a href={links.superteam} target="_blank" rel="noopener noreferrer" className="link-quiet">Superteam ID</a>
             <a href={`https://${org.domainEsport}`} target="_blank" rel="noopener noreferrer" className="link-quiet">UKM E-Sport ↗</a>
+            {/* Participants collect their own certificates here. It sits in the
+                links column at the same weight as everything else: findable by
+                anyone looking for it, invisible as a call to action. */}
+            <Link href="/sertifikat" className="link-quiet">{certDict(locale).entry.label}</Link>
           </nav>
         </div>
       </div>

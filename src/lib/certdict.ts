@@ -1,0 +1,291 @@
+/* Copy for the certificate claim page.
+ *
+ * The site carries ten locales. This page is a member service that hands out
+ * documents against a name, so it ships Indonesian, the language of record,
+ * plus English for anyone reading the site in another locale. Personal names
+ * are never translated.
+ */
+import type { Locale } from "./i18n";
+
+export type CertDict = {
+  meta: { title: string; back: string; home: string };
+  entry: { label: string; hint: string };
+  hero: { kicker: string; title: string; lede: string; scope: string };
+  form: {
+    legend: string;
+    name: string;
+    namePh: string;
+    submit: string;
+    working: string;
+    hint: string;
+  };
+  err: { empty: string; notFound: string; cooldown: string; generic: string };
+  res: {
+    heading: string;
+    one: string;
+    many: string;
+    issued: string;
+    ref: string;
+    source: string;
+    formats: string;
+    formatsNote: string;
+    preparing: string;
+    original: string;
+    again: string;
+    preview: string;
+    noPreview: string;
+  };
+  help: { title: string; body: string; wa: string; ig: string };
+  empty: { title: string; body: string };
+  admin: {
+    signIn: string;
+    user: string;
+    pass: string;
+    enter: string;
+    wrong: string;
+    title: string;
+    slots: string;
+    slotsNote: string;
+    add: string;
+    edit: string;
+    fName: string;
+    fTitle: string;
+    fEvent: string;
+    fDate: string;
+    fRef: string;
+    fFile: string;
+    fFileKeep: string;
+    save: string;
+    update: string;
+    cancel: string;
+    list: string;
+    listEmpty: string;
+    del: string;
+    delConfirm: string;
+    exportJson: string;
+    exportFiles: string;
+    importJson: string;
+    signedInAs: string;
+    roleLead: string;
+    rolePembina: string;
+    dropHere: string;
+    awaiting: string;
+    rosterLabel: string;
+    rosterPh: string;
+    rosterAdd: string;
+    rosterHint: string;
+    seed: string;
+    wipe: string;
+    wipeConfirm: string;
+    signOut: string;
+    saved: string;
+    note: string;
+    published: string;
+    local: string;
+    publishHelp: string;
+  };
+};
+
+const id: CertDict = {
+  meta: { title: "Klaim Sertifikat", back: "Kembali ke beranda", home: "UAJM Blockchain Club" },
+  entry: { label: "Klaim sertifikat", hint: "Untuk peserta kelas dan kegiatan UAJM BCC." },
+  hero: {
+    kicker: "Layanan peserta",
+    title: "Klaim sertifikat kegiatan.",
+    lede: "Masukkan nama lengkap persis seperti saat mendaftar kegiatan. Sertifikat yang terdaftar atas nama tersebut akan terbuka dan dapat diunduh dalam format apa pun.",
+    scope: "Halaman ini untuk peserta UAJM Blockchain Club. Tanpa nama yang cocok, tidak ada berkas yang ditampilkan.",
+  },
+  form: {
+    legend: "Verifikasi nama",
+    name: "Nama lengkap",
+    namePh: "Contoh: Vincentius Bryan Kwandou",
+    submit: "Buka sertifikat saya",
+    working: "Memeriksa…",
+    hint: "Huruf besar-kecil, spasi ganda dan tanda baca tidak berpengaruh.",
+  },
+  err: {
+    empty: "Isi nama lengkap terlebih dahulu.",
+    notFound: "Tidak ada sertifikat atas nama tersebut. Periksa ejaan nama, lalu coba lagi.",
+    cooldown: "Terlalu banyak percobaan. Coba lagi dalam {s} detik.",
+    generic: "Terjadi kesalahan saat membuka berkas.",
+  },
+  res: {
+    heading: "Sertifikat ditemukan",
+    one: "1 sertifikat terdaftar atas nama ini.",
+    many: "{n} sertifikat terdaftar atas nama ini.",
+    issued: "Tanggal terbit",
+    ref: "Nomor",
+    source: "Berkas",
+    formats: "Unduh sebagai",
+    formatsNote: "Berkas dikonversi di peramban Anda. Tidak ada dokumen yang dikirim ke layanan lain.",
+    preparing: "Menyiapkan…",
+    original: "Unduh berkas asli",
+    again: "Cari nama lain",
+    preview: "Pratinjau",
+    noPreview: "Pratinjau tidak tersedia untuk jenis berkas ini. Unduh berkas asli untuk membukanya.",
+  },
+  help: {
+    title: "Sertifikat belum muncul?",
+    body: "Sertifikat baru tampil setelah pengurus memasukkannya ke registry. Hubungi pengurus jika nama Anda seharusnya terdaftar.",
+    wa: "Grup WhatsApp",
+    ig: "Instagram",
+  },
+  empty: {
+    title: "Registry sertifikat masih kosong",
+    body: "Belum ada sertifikat yang dimasukkan pengurus. Formulir di atas tetap berfungsi dan akan menemukan berkas begitu registry terisi.",
+  },
+  admin: {
+    signIn: "Masuk pengurus",
+    user: "Nama pengguna",
+    pass: "Kata sandi",
+    enter: "Masuk",
+    wrong: "Nama pengguna atau kata sandi salah.",
+    title: "Dasbor pengurus",
+    slots: "{n} dari {t} slot terisi",
+    slotsNote: "Kapasitas rujukan 25 entri. Menambah di atas itu tetap diizinkan.",
+    add: "Tambah sertifikat",
+    edit: "Ubah sertifikat",
+    fName: "Nama lengkap penerima",
+    fTitle: "Judul sertifikat",
+    fEvent: "Kegiatan / penerbit",
+    fDate: "Tanggal terbit",
+    fRef: "Nomor sertifikat (opsional)",
+    fFile: "Berkas sertifikat (PDF, JPG, PNG, WEBP) — boleh dikosongkan dulu",
+    fFileKeep: "Biarkan kosong untuk mempertahankan berkas lama.",
+    save: "Simpan sertifikat",
+    update: "Simpan perubahan",
+    cancel: "Batal",
+    list: "Sertifikat terdaftar",
+    listEmpty: "Belum ada entri. Tempel daftar nama di atas, lalu seret berkas sertifikat ke barisnya.",
+    del: "Hapus",
+    delConfirm: "Hapus sertifikat ini dari registry?",
+    exportJson: "Ekspor registry (JSON)",
+    exportFiles: "Unduh semua berkas",
+    importJson: "Impor registry (JSON)",
+    signedInAs: "Masuk sebagai",
+    roleLead: "Ketua BCC",
+    rolePembina: "Dosen Pembina",
+    dropHere: "Seret berkas sertifikat ke baris ini",
+    awaiting: "Menunggu berkas",
+    rosterLabel: "Tambah banyak peserta sekaligus",
+    rosterPh: "Nama Lengkap\nNama Lengkap",
+    rosterAdd: "Tambah dari daftar",
+    rosterHint: "Satu baris satu nama.",
+    seed: "Muat 25 contoh",
+    wipe: "Kosongkan data perangkat ini",
+    wipeConfirm: "Hapus semua sertifikat yang tersimpan di perangkat ini?",
+    signOut: "Keluar",
+    saved: "Tersimpan.",
+    note: "Gerbang masuk ini berjalan di peramban, bukan di server. Cukup untuk memisahkan pengurus dari pengunjung, bukan untuk menahan penyerang. Ketua BCC dan Dosen Pembina memakai akun terpisah.",
+    published: "Terbit",
+    local: "Perangkat ini",
+    publishHelp:
+      "Sertifikat yang ditambahkan di sini tersimpan pada perangkat ini. Untuk membuatnya dapat diklaim dari perangkat mana pun: tekan Ekspor registry, tekan Unduh semua berkas, letakkan berkas di public/sertifikat-berkas/, tempelkan JSON ke public/data/certificates.json, lalu deploy ulang. Registry yang diekspor tidak memuat nama, hanya sidik SHA-256 dari nama, sehingga berkas publik itu bukan daftar peserta.",
+  },
+};
+
+const en: CertDict = {
+  meta: { title: "Certificate Claim", back: "Back to home", home: "UAJM Blockchain Club" },
+  entry: { label: "Claim certificate", hint: "For UAJM BCC class and event participants." },
+  hero: {
+    kicker: "Participant service",
+    title: "Claim your event certificate.",
+    lede: "Enter your full name exactly as you registered for the event. Any certificate issued under that name unlocks and can be downloaded in any format.",
+    scope: "This page is for UAJM Blockchain Club participants. Without a matching name, no file is shown.",
+  },
+  form: {
+    legend: "Name check",
+    name: "Full name",
+    namePh: "e.g. Vincentius Bryan Kwandou",
+    submit: "Open my certificate",
+    working: "Checking…",
+    hint: "Letter case, double spaces and punctuation make no difference.",
+  },
+  err: {
+    empty: "Enter your full name first.",
+    notFound: "No certificate is registered under that name. Check the spelling and try again.",
+    cooldown: "Too many attempts. Try again in {s} seconds.",
+    generic: "Something went wrong while opening the file.",
+  },
+  res: {
+    heading: "Certificate found",
+    one: "1 certificate is registered under this name.",
+    many: "{n} certificates are registered under this name.",
+    issued: "Issued",
+    ref: "Number",
+    source: "File",
+    formats: "Download as",
+    formatsNote: "Conversion runs in your browser. No document is sent to another service.",
+    preparing: "Preparing…",
+    original: "Download original file",
+    again: "Look up another name",
+    preview: "Preview",
+    noPreview: "No preview is available for this file type. Download the original to open it.",
+  },
+  help: {
+    title: "Certificate not showing?",
+    body: "A certificate appears once the board has entered it into the registry. Contact the board if your name should already be there.",
+    wa: "WhatsApp group",
+    ig: "Instagram",
+  },
+  empty: {
+    title: "The certificate registry is still empty",
+    body: "The board has not entered any certificate yet. The form above already works and will find a file the moment the registry is filled.",
+  },
+  admin: {
+    signIn: "Board sign-in",
+    user: "Username",
+    pass: "Password",
+    enter: "Sign in",
+    wrong: "Wrong username or password.",
+    title: "Board dashboard",
+    slots: "{n} of {t} slots filled",
+    slotsNote: "25 entries is the reference capacity. Adding more is still allowed.",
+    add: "Add certificate",
+    edit: "Edit certificate",
+    fName: "Recipient full name",
+    fTitle: "Certificate title",
+    fEvent: "Event / issuer",
+    fDate: "Issue date",
+    fRef: "Certificate number (optional)",
+    fFile: "Certificate file (PDF, JPG, PNG, WEBP) — may be left empty for now",
+    fFileKeep: "Leave empty to keep the existing file.",
+    save: "Save certificate",
+    update: "Save changes",
+    cancel: "Cancel",
+    list: "Registered certificates",
+    listEmpty: "No entry yet. Paste a name list above, then drop each certificate file on its row.",
+    del: "Delete",
+    delConfirm: "Remove this certificate from the registry?",
+    exportJson: "Export registry (JSON)",
+    exportFiles: "Download every file",
+    importJson: "Import registry (JSON)",
+    signedInAs: "Signed in as",
+    roleLead: "BCC lead",
+    rolePembina: "Faculty supervisor",
+    dropHere: "Drop the certificate file on this row",
+    awaiting: "Awaiting file",
+    rosterLabel: "Add several participants at once",
+    rosterPh: "Full Name\nFull Name",
+    rosterAdd: "Add from list",
+    rosterHint: "One name per line.",
+    seed: "Load 25 samples",
+    wipe: "Clear this device",
+    wipeConfirm: "Delete every certificate stored on this device?",
+    signOut: "Sign out",
+    saved: "Saved.",
+    note: "This gate runs in the browser, not on a server. It separates the board from visitors; it does not hold off an attacker. The BCC lead and the faculty supervisor sign in with separate accounts.",
+    published: "Published",
+    local: "This device",
+    publishHelp:
+      "Certificates added here live on this device. To make them claimable from any device: export the registry, download every file, drop the files into public/sertifikat-berkas/, paste the JSON into public/data/certificates.json and redeploy. The exported registry carries no name, only a SHA-256 of the name, so the public file is not a participant roster.",
+  },
+};
+
+export function certDict(locale: Locale): CertDict {
+  return locale === "id" ? id : en;
+}
+
+export function fill(template: string, vars: Record<string, string | number>): string {
+  return template.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+}
