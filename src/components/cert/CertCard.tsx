@@ -119,8 +119,8 @@ export function CertCard({ rec, d }: { rec: CertRecord; d: CertDict }) {
                     disabled={busy !== null}
                     className={
                       i === 0
-                        ? "btn-primary px-4 py-2 text-xs disabled:opacity-60"
-                        : "border border-[color:var(--line)] px-4 py-2 text-xs font-semibold text-[color:var(--text)] duration-200 ease-crisp [transition-property:opacity] hover:border-[color:var(--line-strong)] disabled:opacity-60"
+                        ? "btn-primary rounded-[2px] px-4 py-2 text-xs disabled:opacity-60"
+                        : "rounded-[2px] border border-[color:var(--muted)] px-4 py-2 text-xs font-semibold text-[color:var(--text)] hover:bg-[color:var(--surface-2)] disabled:opacity-60"
                     }
                   >
                     {busy === f ? d.res.preparing : LABEL[f]}

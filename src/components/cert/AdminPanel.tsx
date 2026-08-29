@@ -151,7 +151,7 @@ function SignIn({
         </p>
       )}
       <div className="mt-6 flex items-center gap-3">
-        <button type="submit" disabled={busy} className="btn-primary px-5 py-2.5 text-xs disabled:opacity-60">
+        <button type="submit" disabled={busy} className="btn-primary rounded-[2px] px-5 py-2.5 text-xs disabled:opacity-60">
           {busy ? d.form.working : d.admin.enter}
         </button>
         <button
@@ -436,23 +436,21 @@ function Dashboard({
         <button
           type="button"
           onClick={onSignOut}
-          className="border border-[color:var(--line)] px-4 py-2 text-xs text-[color:var(--text)] hover:border-[color:var(--line-strong)]"
+          className="rounded-[2px] border border-[color:var(--muted)] px-4 py-2 text-xs font-medium text-[color:var(--text)] hover:bg-[color:var(--surface-2)]"
         >
           {d.admin.signOut}
         </button>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-1" aria-hidden="true">
-        {Array.from({ length: Math.max(SLOTS, filled) }, (_, i) => (
-          <span
-            key={i}
-            className={`h-2 w-2.5 rounded-sm ${
-              i < filled
-                ? "bg-[color:var(--accent)]"
-                : "border border-[color:var(--line)] bg-[color:var(--surface-2)]"
-            }`}
-          />
-        ))}
+      <div
+        className="mt-6 h-2 w-full overflow-hidden rounded-full border border-[color:var(--line-strong)]"
+        role="img"
+        aria-label={fill(d.admin.slots, { n: filled, t: SLOTS })}
+      >
+        <div
+          className="h-full bg-[color:var(--accent)]"
+          style={{ width: `${Math.min(100, (filled / SLOTS) * 100)}%` }}
+        />
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -513,7 +511,7 @@ function Dashboard({
           {status && <p className="mt-4 text-xs text-[color:var(--muted)]">{status}</p>}
 
           <div className="mt-6 flex items-center gap-3">
-            <button type="submit" disabled={busy} className="btn-primary px-5 py-2.5 text-xs disabled:opacity-60">
+            <button type="submit" disabled={busy} className="btn-primary rounded-[2px] px-5 py-2.5 text-xs disabled:opacity-60">
               {draft.id ? d.admin.update : d.admin.save}
             </button>
             {draft.id && (
@@ -660,7 +658,7 @@ function ToolButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className="border border-[color:var(--line)] px-3.5 py-2 text-xs text-[color:var(--muted)] hover:border-[color:var(--line-strong)] hover:text-[color:var(--text)] disabled:opacity-60"
+      className="rounded-[2px] border border-[color:var(--muted)] px-3.5 py-2 text-xs font-medium text-[color:var(--text)] hover:bg-[color:var(--surface-2)] disabled:border-[color:var(--line-strong)] disabled:text-[color:var(--faint)] disabled:opacity-100"
     >
       {children}
     </button>

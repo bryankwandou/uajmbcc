@@ -12,7 +12,7 @@
  * are never put in a URL, a request body, or a log.
  */
 
-export const SLOTS = 200;
+export const SLOTS = 2000;
 
 export type CertRecord = {
   id: string;
@@ -99,15 +99,33 @@ async function settle<T>(p: Promise<T[]>, ms = 8000): Promise<T[]> {
   });
 }
 
-export function allRecords(): Promise<CertRecord[]> {
-  return settle(
-    (async () => {
-      const res = await fetch("/api/registry", { cache: "no-store" });
-      if (!res.ok) return [];
-      const rows: unknown = await res.json();
-      return Array.isArray(rows) ? (rows as CertRecord[]).map((r) => ({ ...r, fullName: "" })) : [];
-    })(),
-  );
+/** How many certificates are claimable. One integer, whatever the size. */
+export async function registryCount(): Promise<number> {
+  try {
+    const res = await fetch("/api/registry", { cache: "no-store" });
+    if (!res.ok) return 0;
+    const body = (await res.json()) as { count?: number };
+    return typeof body.count === "number" ? body.count : 0;
+  } catch {
+    return 0;
+  }
+}
+
+/* The claim itself.
+ *
+ * The name is hashed here and only the first four hex characters of that hash
+ * leave the browser. The server answers with the rows sharing that bucket — a
+ * couple of rows at any realistic size — and the full comparison happens back
+ * here. The name never travels, and the payload does not grow with the
+ * registry. */
+export async function lookup(fullName: string): Promise<CertRecord[]> {
+  const key = await identityKey(fullName);
+  const res = await fetch(`/api/registry?p=${key.slice(0, 4)}`, { cache: "no-store" });
+  if (!res.ok) return [];
+  const rows: unknown = await res.json();
+  if (!Array.isArray(rows)) return [];
+  const name = fullName.trim().replace(/\s+/g, " ");
+  return (rows as CertRecord[]).filter((r) => r.key === key).map((r) => ({ ...r, fullName: name }));
 }
 
 /* ── files ─────────────────────────────────────────────────────────────── */
