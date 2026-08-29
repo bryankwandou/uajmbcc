@@ -67,6 +67,7 @@ export type CertDict = {
     importJson: string;
     signedInAs: string;
     roleLead: string;
+    roleSekretaris: string;
     rolePembina: string;
     dropHere: string;
     awaiting: string;
@@ -164,6 +165,7 @@ const id: CertDict = {
     importJson: "Impor registry (JSON)",
     signedInAs: "Masuk sebagai",
     roleLead: "Ketua BCC",
+    roleSekretaris: "Sekretaris",
     rolePembina: "Dosen Pembina",
     dropHere: "Seret berkas sertifikat ke baris ini",
     awaiting: "Menunggu berkas",
@@ -176,7 +178,7 @@ const id: CertDict = {
     wipeConfirm: "Hapus semua sertifikat yang tersimpan di perangkat ini?",
     signOut: "Keluar",
     saved: "Tersimpan.",
-    note: "Gerbang masuk ini berjalan di peramban, bukan di server. Cukup untuk memisahkan pengurus dari pengunjung, bukan untuk menahan penyerang. Ketua BCC dan Dosen Pembina memakai akun terpisah.",
+    note: "Gerbang masuk ini berjalan di peramban, bukan di server. Cukup untuk memisahkan pengurus dari pengunjung, bukan untuk menahan penyerang. Ketua BCC, Sekretaris, dan Dosen Pembina memakai akun terpisah dengan hak yang sama persis.",
     published: "Terbit",
     local: "Perangkat ini",
     publishHelp:
@@ -262,6 +264,7 @@ const en: CertDict = {
     importJson: "Import registry (JSON)",
     signedInAs: "Signed in as",
     roleLead: "BCC lead",
+    roleSekretaris: "Secretary",
     rolePembina: "Faculty supervisor",
     dropHere: "Drop the certificate file on this row",
     awaiting: "Awaiting file",
@@ -274,7 +277,7 @@ const en: CertDict = {
     wipeConfirm: "Delete every certificate stored on this device?",
     signOut: "Sign out",
     saved: "Saved.",
-    note: "This gate runs in the browser, not on a server. It separates the board from visitors; it does not hold off an attacker. The BCC lead and the faculty supervisor sign in with separate accounts.",
+    note: "This gate runs in the browser, not on a server. It separates the board from visitors; it does not hold off an attacker. The BCC lead, the secretary and the faculty supervisor sign in separately and share one dashboard with identical rights.",
     published: "Published",
     local: "This device",
     publishHelp:
