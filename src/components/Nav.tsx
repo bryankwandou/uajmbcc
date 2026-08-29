@@ -4,9 +4,10 @@ import { Logo } from "./Logo";
 import { Controls } from "./Controls";
 import { useApp } from "./Providers";
 import { links } from "@/lib/content";
+import { certDict } from "@/lib/certdict";
 
 export function Nav() {
-  const { t } = useApp();
+  const { t, locale } = useApp();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -16,6 +17,10 @@ export function Nav() {
     { href: "#perjalanan", label: t.nav.journey },
     { href: "#tim", label: t.nav.team },
     { href: "#kontak", label: t.nav.contact },
+    // A participant looking for their certificate should not have to reach the
+    // footer to find the door. It sits at the same weight as every other nav
+    // item: findable at a glance, still not a call to action.
+    { href: "/sertifikat", label: certDict(locale).entry.label },
   ];
 
   useEffect(() => {
