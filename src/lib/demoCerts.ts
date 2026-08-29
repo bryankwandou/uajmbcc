@@ -1,11 +1,11 @@
 /* Sample registry generator.
  *
- * One click fills all 25 reference slots so the claim flow can be exercised
- * end to end before a single real document exists. Every sheet it draws is
+ * One click writes 25 sheets into the database so the claim flow can be
+ * exercised end to end before a single real document exists. Every sheet it draws is
  * stamped DATA CONTOH and every recipient is "Peserta Contoh NN", so a sample
  * can never be mistaken for, or quietly replace, a real certificate.
  */
-import { newId, SLOTS, type CertRecord } from "./certstore";
+import { newId, type CertRecord } from "./certstore";
 
 const PROGRAMS = [
   ["Peserta Kelas Dasar Blockchain", "UAJM Blockchain Club"],
@@ -86,12 +86,16 @@ function draw(index: number): string {
   ctx.fillText("DATA CONTOH", 0, 40);
   ctx.restore();
 
-  return canvas.toDataURL("image/png");
+  const url = canvas.toDataURL("image/png");
+  // The API stores a bare base64 payload, not a data: URL.
+  return url.slice(url.indexOf(",") + 1);
 }
 
-export function sampleRecords(): CertRecord[] {
+const SAMPLES = 25;
+
+export function sampleRecords(): (CertRecord & { data: string })[] {
   const now = Date.now();
-  return Array.from({ length: SLOTS }, (_, i) => {
+  return Array.from({ length: SAMPLES }, (_, i) => {
     const no = String(i + 1).padStart(2, "0");
     const data = draw(i);
     return {
@@ -103,9 +107,8 @@ export function sampleRecords(): CertRecord[] {
       ref: `CONTOH-${no}/UAJM-BCC/2026`,
       fileName: `contoh-${no}.png`,
       mime: "image/png",
-      size: Math.round((data.length - data.indexOf(",") - 1) * 0.75),
+      size: Math.round(data.length * 0.75),
       data,
-      source: "local" as const,
       createdAt: now + i,
     };
   });

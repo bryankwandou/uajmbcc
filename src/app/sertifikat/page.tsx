@@ -76,7 +76,7 @@ export default function CertificatePage() {
 
       {admin ? (
         <section className="mx-auto max-w-5xl px-6 py-14">
-          <AdminPanel d={d} records={records} onChanged={refresh} onClose={() => setAdmin(false)} />
+          <AdminPanel d={d} onChanged={refresh} onClose={() => setAdmin(false)} />
         </section>
       ) : (
         <Claim d={d} records={records} loaded={loaded} />
