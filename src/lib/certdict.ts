@@ -19,7 +19,7 @@ export type CertDict = {
     working: string;
     hint: string;
   };
-  err: { empty: string; notFound: string; cooldown: string; generic: string };
+  err: { empty: string; notFound: string; emptyRegistry: string; cooldown: string; generic: string };
   res: {
     heading: string;
     one: string;
@@ -36,7 +36,7 @@ export type CertDict = {
     noPreview: string;
   };
   help: { title: string; body: string; wa: string; ig: string };
-  empty: { title: string; body: string };
+  empty: { title: string; body: string; sibling: string; siblingHref: string };
   admin: {
     signIn: string;
     user: string;
@@ -97,7 +97,7 @@ const id: CertDict = {
   form: {
     legend: "Verifikasi nama",
     name: "Nama lengkap",
-    namePh: "Contoh: Vincentius Bryan Kwandou",
+    namePh: "Nama lengkap sesuai data pendaftaran",
     submit: "Buka sertifikat saya",
     working: "Memeriksa…",
     hint: "Huruf besar-kecil, spasi ganda dan tanda baca tidak berpengaruh.",
@@ -105,6 +105,7 @@ const id: CertDict = {
   err: {
     empty: "Isi nama lengkap terlebih dahulu.",
     notFound: "Tidak ada sertifikat atas nama tersebut. Periksa ejaan nama, lalu coba lagi.",
+    emptyRegistry: "Registry situs ini masih kosong, jadi belum ada berkas yang bisa dicocokkan. Ejaan nama Anda bukan penyebabnya.",
     cooldown: "Terlalu banyak percobaan. Coba lagi dalam {s} detik.",
     generic: "Terjadi kesalahan saat membuka berkas.",
   },
@@ -132,6 +133,8 @@ const id: CertDict = {
   empty: {
     title: "Registry sertifikat masih kosong",
     body: "Belum ada sertifikat yang dimasukkan pengurus. Formulir di atas tetap berfungsi dan akan menemukan berkas begitu registry terisi.",
+    sibling: "Sertifikat keanggotaan UKM E-Sport UAJM ada di halaman klaim UKM E-Sport.",
+    siblingHref: "https://uajmesport.vercel.app/sertifikat",
   },
   admin: {
     signIn: "Masuk pengurus",
@@ -194,7 +197,7 @@ const en: CertDict = {
   form: {
     legend: "Name check",
     name: "Full name",
-    namePh: "e.g. Vincentius Bryan Kwandou",
+    namePh: "Full name as given at registration",
     submit: "Open my certificate",
     working: "Checking…",
     hint: "Letter case, double spaces and punctuation make no difference.",
@@ -202,6 +205,7 @@ const en: CertDict = {
   err: {
     empty: "Enter your full name first.",
     notFound: "No certificate is registered under that name. Check the spelling and try again.",
+    emptyRegistry: "This site's registry is still empty, so there is nothing to match against. Your spelling is not the problem.",
     cooldown: "Too many attempts. Try again in {s} seconds.",
     generic: "Something went wrong while opening the file.",
   },
@@ -229,6 +233,8 @@ const en: CertDict = {
   empty: {
     title: "The certificate registry is still empty",
     body: "The board has not entered any certificate yet. The form above already works and will find a file the moment the registry is filled.",
+    sibling: "UKM E-Sport UAJM membership certificates live on the UKM E-Sport claim page.",
+    siblingHref: "https://uajmesport.vercel.app/sertifikat",
   },
   admin: {
     signIn: "Board sign-in",
