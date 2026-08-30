@@ -59,6 +59,8 @@ export type CertDict = {
     update: string;
     cancel: string;
     list: string;
+    search: string;
+    searchCount: string;
     listEmpty: string;
     download: string;
     del: string;
@@ -158,6 +160,8 @@ const id: CertDict = {
     update: "Simpan perubahan",
     cancel: "Batal",
     list: "Sertifikat terdaftar",
+    search: "Cari nama atau judul sertifikat",
+    searchCount: "menampilkan {n} dari {t}",
     listEmpty: "Belum ada entri. Tempel daftar nama di atas, lalu seret berkas sertifikat ke barisnya.",
     download: "Unduh",
     del: "Hapus",
@@ -258,6 +262,8 @@ const en: CertDict = {
     update: "Save changes",
     cancel: "Cancel",
     list: "Registered certificates",
+    search: "Search name or certificate title",
+    searchCount: "showing {n} of {t}",
     listEmpty: "No entry yet. Paste a name list above, then drop each certificate file on its row.",
     download: "Download",
     del: "Delete",
