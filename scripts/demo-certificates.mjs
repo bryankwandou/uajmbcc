@@ -20,7 +20,7 @@ const SALT = "uajm-bcc/sertifikat/v1";
 const TITLE = "Sertifikat Peserta (DATA CONTOH)";
 const EVENT = "Web3 & Solana Interactive Gathering #1 · Superteam Campus Club Makassar";
 const ISSUED = "10 Juli 2025";
-const COUNT = 10;
+const COUNT = 30;
 
 function dbUrl() {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
