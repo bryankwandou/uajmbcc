@@ -5,6 +5,7 @@ import { Controls } from "./Controls";
 import { useApp } from "./Providers";
 import { links } from "@/lib/content";
 import { certDict } from "@/lib/certdict";
+import { marsDict } from "@/lib/marsdict";
 
 export function Nav() {
   const { t, locale } = useApp();
@@ -21,6 +22,9 @@ export function Nav() {
     // footer to find the door. It sits at the same weight as every other nav
     // item: findable at a glance, still not a call to action.
     { href: "/sertifikat", label: certDict(locale).entry.label },
+    // Halaman lagu resmi. Rutenya sendiri, jadi membukanya tidak membebani
+    // beranda; ditaruh sejajar dengan menu lain supaya mudah ditemukan.
+    { href: "/mars", label: marsDict(locale).entry.label },
   ];
 
   useEffect(() => {
