@@ -1,5 +1,5 @@
 /* Lagu resmi UAJM BCC.
-   Lirik disalin persis dari naskah lagu (nayrbryanGaming, 2 September 2026,
+   Lirik disalin persis dari naskah lagu (BRYAN KWANDOU, 2 September 2026,
    v5.5). Kedua versi rekaman memakai lirik yang sama; yang berbeda hanya
    aransemen dan durasi, jadi lirik disimpan sekali per lagu.
 
@@ -52,7 +52,7 @@ function media(slug: string) {
 }
 
 export const marsCredit = {
-  composer: "nayrbryanGaming",
+  composer: "BRYAN KWANDOU",
   written: "2 September 2026",
   version: "v5.5",
   owner: "UAJM BCC, di bawah UKM E-Sport Universitas Atma Jaya Makassar",
