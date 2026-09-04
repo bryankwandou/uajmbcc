@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Controls } from "@/components/Controls";
-import { LogoMark } from "@/components/Logo";
+import { Logo } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
 import { useApp } from "@/components/Providers";
 import { MarsPlayerProvider, useMarsPlayer } from "@/components/mars/MarsPlayer";
@@ -38,11 +38,8 @@ function PageNav() {
   return (
     <header className="sticky top-0 z-30 border-b border-[color:var(--line)] bg-[color:var(--bg)]/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-5 py-3">
-        <Link href="/" className="flex min-w-0 items-center gap-2.5">
-          <LogoMark />
-          <span className="truncate font-display text-xs font-semibold text-[color:var(--text)]">
-            {org.name}
-          </span>
+        <Link href="/" className="flex min-w-0 items-center" aria-label={org.name}>
+          <Logo />
         </Link>
         <div className="flex shrink-0 items-center gap-2">
           <Controls />
