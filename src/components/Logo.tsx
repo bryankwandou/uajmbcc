@@ -46,11 +46,13 @@ export function LogoMark({ size = 30 }: { size?: number }) {
 
 export function Logo() {
   return (
-    <div className="flex min-w-0 items-center gap-3">
+    <div className="flex shrink-0 items-center gap-3">
       <BrandChip height={26} />
       {/* Hidden on the narrowest viewports so it can never collide with the
-          language and theme controls. */}
-      <div className="hidden min-w-0 leading-none sm:block">
+          language and theme controls. Tanpa min-w-0: kedua barisnya
+          whitespace-nowrap, jadi kotak yang boleh menyusut hanya akan melubernya
+          ke tautan sebelah -- tanpa scrollbar dan tanpa potongan yang terlihat. */}
+      <div className="hidden leading-none sm:block">
         <div className="whitespace-nowrap font-display text-[15px] font-extrabold tracking-[-0.02em] text-[color:var(--text)]">
           UAJM <span className="text-[color:var(--accent)]">BCC</span>
         </div>
