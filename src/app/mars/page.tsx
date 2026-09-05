@@ -72,12 +72,15 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-2xl leading-relaxed text-[color:var(--muted)]">{d.hero.lede}</p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
+            {/* Labelnya menyebut lagu dan versi yang akan berbunyi. Sebelumnya
+                tertulis "mars utama" saja, sehingga pendengar baru tahu lagu mana
+                yang dimaksud setelah menekannya. */}
             <button
               type="button"
               onClick={() => toggle(main.versions[0], main.title)}
               className="btn-primary px-6 py-3 text-sm"
             >
-              {d.hero.playAll}
+              {d.hero.playAll}: {main.title} — {main.versions[0].label}
             </button>
             <span className="font-mono text-xs text-[color:var(--faint)]">{d.hero.counts}</span>
           </div>
