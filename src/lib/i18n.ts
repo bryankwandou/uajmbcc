@@ -60,6 +60,7 @@ export type Dict = {
     faculties: string[]; facultyNote: string;
   };
   achievements: { kicker: string; title: string; items: Ach[]; hackTitle: string; hackBody: string; hackHolder: string; shipped: string; open: string };
+  gallery: { kicker: string; title: string; sub: string; all: string; more: string; less: string; empty: string };
   cta: { kicker: string; title: string; lede: string; join: string; instagram: string; github: string };
   footer: { rights: string };
   contactBlock: { title: string; links: string; phone: string; whatsapp: string };
@@ -133,6 +134,11 @@ const id: Dict = {
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
       { title: "Hampir 30 Hackathon", org: "Portofolio pendiri", tag: "GitHub: bryankwandou", date: "2024 s.d. 2026" },
     ],
+  },
+  gallery: {
+    kicker: "Galeri", title: "Dokumentasi kegiatan",
+    sub: "Meetup builder, kelas, pencapaian dan unggahan media sosial UAJM BCC.",
+    all: "Semua", more: "Lihat lebih banyak", less: "Tutup", empty: "Belum ada dokumentasi di kategori ini.",
   },
   cta: {
     kicker: "Kontak", title: "Bangun yang berikutnya bersama kami",
@@ -216,6 +222,11 @@ const en: Dict = {
       { title: "Personal Branding Academy", org: "Kadev Co.", tag: "Certificate of Completion", date: "31 Jul 2026" },
       { title: "Nearly 30 Hackathons", org: "Founder portfolio", tag: "GitHub: bryankwandou", date: "2024 to 2026" },
     ],
+  },
+  gallery: {
+    kicker: "Gallery", title: "Activity documentation",
+    sub: "Builder meetups, classes, milestones and social posts from UAJM BCC.",
+    all: "All", more: "Show more", less: "Close", empty: "Nothing documented in this category yet.",
   },
   cta: {
     kicker: "Contact", title: "Build the next one with us",

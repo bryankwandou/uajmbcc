@@ -5,9 +5,10 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { OnChainVerify } from "@/components/OnChainVerify";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
-import { BrandChip } from "@/components/Logo";
+import { BrandChip, LogoMark } from "@/components/Logo";
 import { Credentials } from "@/components/Credentials";
 import { useApp } from "@/components/Providers";
+import { GalleryFeed } from "@/components/gallery/GalleryFeed";
 import { org, structure, faculties, links, contact, mvps } from "@/lib/content";
 import { certDict } from "@/lib/certdict";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Journey />
       <Team />
       <Achievements />
+      <Galeri />
       <CTA />
       <Footer />
       <OnChainVerify />
@@ -239,6 +241,22 @@ function Achievements() {
           shipped: t.achievements.shipped,
           open: t.achievements.open,
         }}
+      />
+    </section>
+  );
+}
+
+/* Dokumentasi kegiatan, prestasi dan medsos. Isinya dikelola dari dasbor
+   pengurus (/sertifikat → Masuk pengurus → Galeri), bukan dari kode. */
+function Galeri() {
+  const { t, period } = useApp();
+  const g = t.gallery;
+  return (
+    <section id="galeri" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHead kicker={`${g.kicker} · ${period.term}`} title={g.title} lede={g.sub} />
+      <GalleryFeed
+        brand={{ name: "uajm_bcc", avatar: <LogoMark size={26} /> }}
+        labels={{ all: g.all, more: g.more, less: g.less, empty: g.empty }}
       />
     </section>
   );
