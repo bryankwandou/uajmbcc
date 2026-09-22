@@ -1,4 +1,5 @@
 "use client";
+import { useRegisterUrl } from "@/lib/registerlink";
 import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
@@ -264,6 +265,7 @@ function Galeri() {
 
 function CTA() {
   const { t } = useApp();
+  const registerUrl = useRegisterUrl(links.whatsapp);
   return (
     <section id="kontak" className="mt-8 border-y border-[color:var(--line-strong)]">
       <div className="mx-auto max-w-6xl px-6 py-20">
@@ -277,7 +279,7 @@ function CTA() {
               <p className="mt-4 max-w-lg text-[15px] leading-[1.7] text-[color:var(--muted)]">{t.cta.lede}</p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">
-              <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary px-6 py-3 text-[13px]">
+              <a href={registerUrl} target="_blank" rel="noopener noreferrer" className="btn-primary px-6 py-3 text-[13px]">
                 {t.cta.join}
               </a>
               <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="btn-ghost px-6 py-3 text-[13px]">
@@ -296,6 +298,7 @@ function CTA() {
 
 function Footer() {
   const { t, locale } = useApp();
+  const registerUrl = useRegisterUrl(links.whatsapp);
   const c = t.contactBlock;
   return (
     <footer className="mx-auto max-w-6xl px-6 py-16">
@@ -329,7 +332,7 @@ function Footer() {
         <div>
           <div className="kicker">{c.links}</div>
           <nav className="mt-4 flex flex-col gap-2.5 font-mono text-[11px]">
-            <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="link-quiet">{t.nav.join}</a>
+            <a href={registerUrl} target="_blank" rel="noopener noreferrer" className="link-quiet">{t.nav.join}</a>
             <a href={links.instagramBcc} target="_blank" rel="noopener noreferrer" className="link-quiet">Instagram</a>
             <a href={links.github} target="_blank" rel="noopener noreferrer" className="link-quiet">GitHub</a>
             <a href={links.superteam} target="_blank" rel="noopener noreferrer" className="link-quiet">Superteam ID</a>
